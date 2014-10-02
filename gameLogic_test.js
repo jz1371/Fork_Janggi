@@ -3428,34 +3428,44 @@ describe("In Janggi ", function()
             { set: { key: 'delta', value: { piece: 'RU2', row: 0, col: 4 } } }
             ]);
     });
-    
+  
 
     // ==========================================================================================================
     // Game example and riddle
     // ==========================================================================================================
+    
+    function expectLegalHistoryThatEndsTheGame(history)
+    {
+        for (var i = 0; i < history.length; i++)
+        {
+            expectMoveOk(history[i].turnIndexBeforeMove, history[i].stateBeforeMove, history[i].move);
+        }
+        expect(history[history.length - 1].move[0].endMatch).toBeDefined();
+    }
+
     function expectLegalHistory(history)
     {
         for (var i = 0; i < history.length; i++)
         {
             expectMoveOk(history[i].turnIndexBeforeMove, history[i].stateBeforeMove, history[i].move);
         }
-        expect(history[history.length - 1].move[0]).toBeDefined();
+        expect(history[history.length - 1].move[1].set.value).toBeDefined();
     }
 
-    it("getExampleGame returns a legal history", function () {
-        var exampleGame = Janggi.getExampleGame();
-        expect(exampleGame.length).toBe(6);
-        console.log(exampleGame.length);
-        expectLegalHistory(exampleGame);
-    });
-    
-    it("getRiddles returns legal history", function () {
+    it("getRiddles returns a legal history and the last move ends the game", function () {
         var riddles = Janggi.getRiddles();
         expect(riddles.length).toBe(1);
         for(var i = 0; i < riddles.length; i++)
         {
-            expectLegalHistory(riddles[i]);
+            expectLegalHistoryThatEndsTheGame(riddles[i]);
         }
     });
+    
+    it("getExampleGame returns a legal history", function () {
+        var exampleGame = Janggi.getExampleGame();
+        expect(exampleGame.length).toBe(7);
+        expectLegalHistory(exampleGame);
+    });
+    
     
 });
