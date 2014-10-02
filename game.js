@@ -1266,7 +1266,7 @@ var Janggi = (function () {
     function getRiddles()
     {
         return [
-            getExampleMoves(0,
+            getExampleMoves(1,
                 {   board: [['', '', '', '', 'RG1', '', '', '', ''],
                         ['', '', '', '', '', '', '', '', ''],
                         ['', '', '', '', '', '', '', '', ''],
@@ -1277,12 +1277,10 @@ var Janggi = (function () {
                         ['', '', '', '', '', '', '', '', ''],
                         ['', '', '', '', 'BU1', '', '', '', ''],
                         ['', '', '', '', 'BG1', '', '', '', '']]
-
-                   ,delta: {piece: 'BR2', row: 0, col: 8}
                 },
                 [
                     { piece: 'BR1', row: 1, col: 0, comment: "Align this chariot to aid the other chariot's next move." },
-                    { piece: 'RG1', row: 0, col: 3, comment: "Red is desperate to keep the game going."},
+                    { piece: 'RG1', row: 0, col: 3, comment: "Red is desperate to keep going."},
                     { piece: 'BR2', row: 0, col: 8, comment: "Place this chariot strategically to force red into submission." },
                     { piece: 'RG1', row: 0, col: 4, comment: "Red is out of moves." },
                     { piece: 'BR2', row: 0, col: 4, comment: "Blue wins by capturing the red general!" }
@@ -1290,15 +1288,19 @@ var Janggi = (function () {
         ];
     }
 
-    function getExampleGame() {
-        return getExampleGame(0, {}, [
+    function getExampleGame()
+    {
+        return getExampleMoves(0, {},
+            [
             { piece: 'RR1', row: 1, col: 0, comment: "Red getting the chariot out of the corner." },
             { piece: 'BR1', row: 8, col: 0, comment: "Ditto the red move." },
-            { piece: 'RG1', row: 1, col: 3, comment: "Get the guards ready." },
-            { piece: 'BS2', row: 6, col: 1, comment: "Soldier's need to move aside." },
-            { piece: 'RC1', row: 7, col: 1, comment: "A blue cannon was captured by red." },
-            { piece: 'BS3', row: 5, col: 4, comment: "Advance the soldiers" }
-        ]);
+            { piece: 'RU1', row: 1, col: 3, comment: "Get the guards ready." },
+            { piece: 'BS2', row: 6, col: 1, comment: "Soldiers need to move aside." },
+            { piece: 'RS1', row: 3, col: 1, comment: "Prepare a compromise." },
+            { piece: 'BC1', row: 3, col: 1, comment: "Capture a red soldier." },
+            { piece: 'RS2', row: 3, col: 1, comment: "Capture a blue cannon." }
+            ]
+        );
     }
 
 
