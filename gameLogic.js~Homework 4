@@ -45,13 +45,8 @@
     
 */
 
-<<<<<<< HEAD:gameLogic.js
 angular.module('myApp.gameLogic', []).service('gameLogic', function() {
 //var Janggi = (function () {
-=======
-
-var Janggi = (function () {
->>>>>>> origin/gh-pages:gameLogic.js
     'use strict';
 
     // ============================================================================
@@ -1319,14 +1314,9 @@ var Janggi = (function () {
     }
 
 
-<<<<<<< HEAD:gameLogic.js
     //return { isMoveOk: isMoveOk , getExampleGame: getExampleGame, getRiddles: getRiddles};
 
     this.isMoveOk = isMoveOk;
     this.getExampleGame = getExampleGame;
     this.getRiddles = getRiddles;
 });
-=======
-    return { isMoveOk: isMoveOk , getExampleGame: getExampleGame, getRiddles: getRiddles};
-})();
->>>>>>> origin/gh-pages:gameLogic.js

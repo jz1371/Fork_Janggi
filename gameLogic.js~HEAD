@@ -45,19 +45,14 @@
     
 */
 
-<<<<<<< HEAD:gameLogic.js
-angular.module('myApp.gameLogic', []).service('gameLogic', function() {
-//var Janggi = (function () {
-=======
 
 var Janggi = (function () {
->>>>>>> origin/gh-pages:gameLogic.js
     'use strict';
 
     // ============================================================================
     // Utility
     // ============================================================================
-    /*
+
     // Function code for "isEqual", "copyObject"
     // is from https://github.com/yoav-zibin/TicTacToe/blob/0b8310d95831eabb3cd9184bbe6402413fc8daee/TicTacToeLogic.js
     function isEqual(object1, object2)
@@ -68,16 +63,6 @@ var Janggi = (function () {
     function copyObject(object)
     {
         return JSON.parse(JSON.stringify(object));
-    }*/
-
-    function isEqual(object1, object2)
-    {
-        return angular.equals(object1, object2);
-    }
-
-    function copyObject(object)
-    {
-        return angular.copy(object);
     }
 
 
@@ -1319,14 +1304,5 @@ var Janggi = (function () {
     }
 
 
-<<<<<<< HEAD:gameLogic.js
-    //return { isMoveOk: isMoveOk , getExampleGame: getExampleGame, getRiddles: getRiddles};
-
-    this.isMoveOk = isMoveOk;
-    this.getExampleGame = getExampleGame;
-    this.getRiddles = getRiddles;
-});
-=======
     return { isMoveOk: isMoveOk , getExampleGame: getExampleGame, getRiddles: getRiddles};
 })();
->>>>>>> origin/gh-pages:gameLogic.js

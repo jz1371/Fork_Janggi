@@ -1,5 +1,6 @@
 describe("In Janggi ", function()
 {
+<<<<<<< HEAD
     var janggiLogic;
 
     beforeEach(module("myApp.gameLogic"));
@@ -12,11 +13,21 @@ describe("In Janggi ", function()
     function expectMoveOk(turnIndexBeforeMove, stateBeforeMove, move)
     {
         expect(janggiLogic.isMoveOk({ turnIndexBeforeMove: turnIndexBeforeMove, stateBeforeMove: stateBeforeMove, move: move })).toBe(true);
+=======
+
+    function expectMoveOk(turnIndexBeforeMove, stateBeforeMove, move)
+    {
+        expect(Janggi.isMoveOk({ turnIndexBeforeMove: turnIndexBeforeMove, stateBeforeMove: stateBeforeMove, move: move })).toBe(true);
+>>>>>>> origin/gh-pages
     }
 
     function expectIllegalMove(turnIndexBeforeMove, stateBeforeMove, move)
     {
+<<<<<<< HEAD
         expect(janggiLogic.isMoveOk({ turnIndexBeforeMove: turnIndexBeforeMove, stateBeforeMove: stateBeforeMove, move: move })).toBe(false);
+=======
+        expect(Janggi.isMoveOk({ turnIndexBeforeMove: turnIndexBeforeMove, stateBeforeMove: stateBeforeMove, move: move })).toBe(false);
+>>>>>>> origin/gh-pages
     }
     
     
@@ -3461,7 +3472,11 @@ describe("In Janggi ", function()
     }
 
     it("getRiddles returns a legal history and the last move ends the game", function () {
+<<<<<<< HEAD
         var riddles = janggiLogic.getRiddles();
+=======
+        var riddles = Janggi.getRiddles();
+>>>>>>> origin/gh-pages
         expect(riddles.length).toBe(1);
         for(var i = 0; i < riddles.length; i++)
         {
@@ -3470,10 +3485,18 @@ describe("In Janggi ", function()
     });
     
     it("getExampleGame returns a legal history", function () {
+<<<<<<< HEAD
         var exampleGame = janggiLogic.getExampleGame();
+=======
+        var exampleGame = Janggi.getExampleGame();
+>>>>>>> origin/gh-pages
         expect(exampleGame.length).toBe(7);
         expectLegalHistory(exampleGame);
     });
     
     
+<<<<<<< HEAD
 });
+=======
+});
+>>>>>>> origin/gh-pages
