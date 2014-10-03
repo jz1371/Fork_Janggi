@@ -1,7 +1,5 @@
 /*  High level description of game logic
     ====================================
-    - First move of both side is to optionally swap any adjacent elephant and horse piece.
-
     - Make a move.
     - check for draws.
     - check if there's a winner.
@@ -42,17 +40,19 @@
     BR1/BR2 - Blue Chariots
     BC1/BC2 - Blue Cannons
     BS1-BS5 - Blue Soldiers
+
+    *Note: Palace refers to the box with diagonal lines at the center top and center bottom of the respective sides.
     
 */
 
-
-var isMoveOk = (function () {
+angular.module('myApp.gameLogic', []).service('gameLogic', function() {
+//var Janggi = (function () {
     'use strict';
 
     // ============================================================================
     // Utility
     // ============================================================================
-
+    /*
     // Function code for "isEqual", "copyObject"
     // is from https://github.com/yoav-zibin/TicTacToe/blob/0b8310d95831eabb3cd9184bbe6402413fc8daee/TicTacToeLogic.js
     function isEqual(object1, object2)
@@ -63,6 +63,16 @@ var isMoveOk = (function () {
     function copyObject(object)
     {
         return JSON.parse(JSON.stringify(object));
+    }*/
+
+    function isEqual(object1, object2)
+    {
+        return angular.equals(object1, object2);
+    }
+
+    function copyObject(object)
+    {
+        return angular.copy(object);
     }
 
 
@@ -207,7 +217,7 @@ var isMoveOk = (function () {
                 moves.push( {row: up.row - 1, col: up.col - 1});
             }
 
-            if ((up.col + 1 < 9) && (board[up.row - 1][up.col + 1][0] != board[row][col][0]))
+            if ((up.col + 1 < 9) && (board[up.row - 1][up.col + 1][0] !== board[row][col][0]))
             {
                 moves.push({ row: up.row - 1, col: up.col + 1 });
             }
@@ -216,12 +226,12 @@ var isMoveOk = (function () {
         var down = { row: row + 1, col: col };
         if (down.row < 9 && board[down.row][down.col] === '')
         {
-            if ((down.col - 1 >= 0) && (board[down.row + 1][down.col - 1][0] != board[row][col][0]))
+            if ((down.col - 1 >= 0) && (board[down.row + 1][down.col - 1][0] !== board[row][col][0]))
             {
                 moves.push({ row: down.row + 1, col: down.col - 1 });
             }
 
-            if ((down.col + 1 < 9) && (board[down.row + 1][down.col + 1][0] != board[row][col][0]))
+            if ((down.col + 1 < 9) && (board[down.row + 1][down.col + 1][0] !== board[row][col][0]))
             {
                 moves.push({ row: down.row + 1, col: down.col + 1 });
             }
@@ -230,12 +240,12 @@ var isMoveOk = (function () {
         var left = { row: row, col: col - 1 };
         if (left.col >= 1 && board[left.row][left.col] === '')
         {
-            if ((left.row - 1 >= 0) && (board[left.row - 1][left.col - 1][0] != board[row][col][0]))
+            if ((left.row - 1 >= 0) && (board[left.row - 1][left.col - 1][0] !== board[row][col][0]))
             {
                 moves.push({ row: left.row - 1, col: left.col - 1 });
             }
 
-            if ((left.row + 1 < 10) && (board[left.row + 1][left.col + 1][0] != board[row][col][0]))
+            if ((left.row + 1 < 10) && (board[left.row + 1][left.col - 1][0] !== board[row][col][0]))
             {
                 moves.push({ row: left.row + 1, col: left.col + 1 });
             }
@@ -244,12 +254,12 @@ var isMoveOk = (function () {
         var right = { row: row, col: col + 1 };
         if (right.col < 8 && board[right.row][right.col] === '')
         {
-            if ((right.row - 1 >= 0) && (board[right.row - 1][right.col + 1][0] != board[row][col][0]))
+            if ((right.row - 1 >= 0) && (board[right.row - 1][right.col + 1][0] !== board[row][col][0]))
             {
                 moves.push({ row: right.row - 1, col: right.col + 1 });
             }
 
-            if ((right.row + 1 < 10) && (board[right.row + 1][right.col + 1][0] != board[row][col][0]))
+            if ((right.row + 1 < 10) && (board[right.row + 1][right.col + 1][0] !== board[row][col][0]))
             {
                 moves.push({ row: right.row + 1, col: right.col + 1 });
             }
@@ -268,7 +278,8 @@ var isMoveOk = (function () {
 
         // If one intermediate move is possible, then check diagonals.
         var up = { row: row - 1, col: col };
-        if (up.row >= 2 && board[up.row][up.col] === '') {
+        if (up.row >= 2 && board[up.row][up.col] === '')
+        {
             if ((up.col - 2 >= 0) &&
                 (board[up.row - 1][up.col - 1] === '') &&
                 (board[up.row - 2][up.col - 2][0] !== board[row][col][0]))
@@ -277,7 +288,7 @@ var isMoveOk = (function () {
             }
 
             if ((up.col + 2 < 9) &&
-                (board[up.row -1][up.col + 1] === '') &&
+                (board[up.row - 1][up.col + 1] === '') &&
                 (board[up.row - 2][up.col + 2][0] !== board[row][col][0]))
             {
                 moves.push({ row: up.row - 2, col: up.col + 2 });
@@ -285,7 +296,8 @@ var isMoveOk = (function () {
         }
 
         var down = { row: row + 1, col: col };
-        if (down.row < 8 && board[down.row][down.col] === '') {
+        if (down.row < 8 && board[down.row][down.col] === '')
+        {
             if ((down.col - 2 >= 0) &&
                 (board[down.row + 1][down.col - 1] === '') &&
                 (board[down.row + 2][down.col - 2][0] !== board[row][col][0]))
@@ -302,14 +314,15 @@ var isMoveOk = (function () {
         }
 
         var left = { row: row, col: col - 1 };
-        if (left.col >= 2 && board[left.row][left.col] === '') {
+        if (left.col >= 2 && board[left.row][left.col] === '')
+        {
             if ((left.row - 2 >= 0) &&
                 (board[left.row - 1][left.col - 1] === '') &&
                 (board[left.row - 2][left.col - 2][0] !== board[row][col][0]))
             {
                 moves.push({ row: left.row - 2, col: left.col - 2 });
             }
-            if ((left.row + 2 < 9) &&
+            if ((left.row + 2 <= 9) &&
                 (board[left.row + 1][left.col - 1] === '') &&
                 (board[left.row + 2][left.col - 2][0] !== board[row][col][0]))
             {
@@ -318,14 +331,15 @@ var isMoveOk = (function () {
         }
 
         var right = { row: row, col: col + 1 };
-        if (right.col < 7 && board[right.row][right.col] === '') {
+        if (right.col < 7 && board[right.row][right.col] === '')
+        {
             if ((right.row - 2 >= 0) &&
                 (board[right.row - 1][right.col + 1] === '') &&
                 (board[right.row - 2][right.col + 2][0] !== board[row][col][0]))
             {
                 moves.push({ row: right.row - 2, col: right.col + 2 });
             }
-            if((right.row + 2 < 9) &&
+            if((right.row + 2 <= 9) &&
                 (board[right.row + 1][right.col + 1] === '') &&
                 (board[right.row + 2][right.col + 2][0] !== board[row][col][0]))
             {
@@ -344,66 +358,67 @@ var isMoveOk = (function () {
 
         // up
         var i = row - 1;
-        while (i >= 0 && (board[i][col] === '' || board[i][col][0] !== board[row][col][0]))
+        while (i >= 0 && (board[i][col] === '' || (board[i][col][0] !== board[row][col][0]) ))
         {
             moves.push({ row: i, col: col });
-            i--;
 
-            if (board[i][col][0] !== board[row][col][0])
+            if ((board[i][col][0] !== board[row][col][0]) && (board[i][col] !== ''))
             {
                 break;
             }
+            i--;
         }
 
         // down
         i = row + 1;
-        while (i < 10 && (board[i][col] === '' || board[i][col][0] !== board[row][col][0]))
+        while (i < 10 && (board[i][col] === '' || (board[i][col][0] !== board[row][col][0]) ))
         {
             moves.push({ row: i, col: col });
-            i++;
 
-            if (board[i][col][0] !== board[row][col][0])
+            if ((board[i][col][0] !== board[row][col][0]) && (board[i][col] !== ''))
             {
                 break;
             }
+            i++;
         }
 
         // left
         i = col - 1;
-        while (i >= 0 && (board[row][i] === '' || board[row][i][0] !== board[row][col][0]))
+        while (i >= 0 && (board[row][i] === '' || (board[row][i][0] !== board[row][col][0])))
         {
             moves.push({ row: row, col: i });
-            i--;
 
-            if (board[row][i][0] !== board[row][col][0])
+            if ((board[row][i][0] !== board[row][col][0]) && (board[row][i] !== ''))
             {
                 break;
             }
+            i--;
         }
 
         // right
         i = col + 1;
-        while (i < 9 && (board[row][i] === ''|| board[row][i][0] !== board[row][col][0]))
+        while (i < 9 && (board[row][i] === '' || (board[row][i][0] !== board[row][col][0])))
         {
             moves.push({ row: row, col: i });
-            i++;
 
-            if (board[row][i][0] !== board[row][col][0]) {
+            if ((board[row][i][0] !== board[row][col][0]) && (board[row][i] !== ''))
+            {
                 break;
             }
+            i++;
         }
 
-        // diagonal;
+        // diagonals
         // top left of top palace
         if (row === 0 && col === 3)
         {
-            if (board[1][4] === '' || board[1][4][0] !== board[row][col][0])
+            if (board[1][4] === '' || (board[1][4][0] !== board[row][col][0]))
             {
                 moves.push({ row: 1, col: 4 });
 
-                if (board[1][4] == '')
+                if (board[1][4] === '')
                 {
-                    if (board[2][5] == '' || board[2][5][0] !== board[row][col][0])
+                    if (board[2][5] === '' || (board[2][5][0] !== board[row][col][0]))
                     {
                         moves.push({ row: 2, col: 5 });
                     }
@@ -412,12 +427,16 @@ var isMoveOk = (function () {
         }
 
         // top right of top palace
-        if (row === 0 && col === 5) {
-            if (board[1][4] === '' || board[1][4][0] !== board[row][col][0]) {
+        if (row === 0 && col === 5)
+        {
+            if (board[1][4] === '' || (board[1][4][0] !== board[row][col][0]))
+            {
                 moves.push({ row: 1, col: 4 });
 
-                if (board[1][4] == '') {
-                    if (board[2][3] == '' || board[2][3][0] !== board[row][col][0]) {
+                if (board[1][4] === '')
+                {
+                    if (board[2][3] === '' || (board[2][3][0] !== board[row][col][0]))
+                    {
                         moves.push({ row: 2, col: 3 });
                     }
                 }
@@ -425,12 +444,16 @@ var isMoveOk = (function () {
         }
 
         // bottom left of top palace
-        if (row === 2 && col === 3) {
-            if (board[1][4] === '' || board[1][4][0] !== board[row][col][0]) {
+        if (row === 2 && col === 3)
+        {
+            if (board[1][4] === '' || (board[1][4][0] !== board[row][col][0]))
+            {
                 moves.push({ row: 1, col: 4 });
 
-                if (board[1][4] == '') {
-                    if (board[0][5] == '' || board[0][5][0] !== board[row][col][0]) {
+                if (board[1][4] === '')
+                {
+                    if (board[0][5] === '' || (board[0][5][0] !== board[row][col][0]))
+                    {
                         moves.push({ row: 0, col: 5 });
                     }
                 }
@@ -438,12 +461,16 @@ var isMoveOk = (function () {
         }
 
         // bottom right of top palace
-        if (row === 2 && col === 5) {
-            if (board[1][4] === '' || board[1][4][0] !== board[row][col][0]) {
+        if (row === 2 && col === 5)
+        {
+            if (board[1][4] === '' || (board[1][4][0] !== board[row][col][0]))
+            {
                 moves.push({ row: 1, col: 4 });
 
-                if (board[1][4] == '') {
-                    if (board[0][3] == '' || board[0][3][0] !== board[row][col][0]) {
+                if (board[1][4] === '')
+                {
+                    if (board[0][3] === '' || (board[0][3][0] !== board[row][col][0]))
+                    {
                         moves.push({ row: 0, col: 3 });
                     }
                 }
@@ -453,28 +480,34 @@ var isMoveOk = (function () {
         // center of top palace
         if (row === 1 && col === 4)
         {
-            if (board[0][3] === '' || board[0][3][0] != board[row][col][0])
+            if (board[0][3] === '' || (board[0][3][0] !== board[row][col][0]))
             {
-                move.push({ row: 0, col: 3 });
+                moves.push({ row: 0, col: 3 });
             }
-            if (board[0][5] === '' || board[0][5][0] != board[row][col][0]) {
-                move.push({ row: 0, col: 5 });
+            if (board[0][5] === '' || (board[0][5][0] !== board[row][col][0]))
+            {
+                moves.push({ row: 0, col: 5 });
             }
-            if (board[2][3] === '' || board[2][3][0] != board[row][col][0]) {
-                move.push({ row: 2, col: 3 });
+            if (board[2][3] === '' || (board[2][3][0] !== board[row][col][0]))
+            {
+                moves.push({ row: 2, col: 3 });
             }
-            if (board[2][5] === '' || board[2][5][0] != board[row][col][0]) {
-                move.push({ row: 2, col: 5 });
+            if (board[2][5] === '' || (board[2][5][0] !== board[row][col][0]))
+            {
+                moves.push({ row: 2, col: 5 });
             }
         }
 
         // top left of bottom palace
         if (row === 7 && col === 3) {
-            if (board[8][4] === '' || board[8][4][0] !== board[row][col][0]) {
+            if (board[8][4] === '' || (board[8][4][0] !== board[row][col][0]))
+            {
                 moves.push({ row: 8, col: 4 });
 
-                if (board[8][4] == '') {
-                    if (board[9][5] == '' || board[9][5][0] !== board[row][col][0]) {
+                if (board[8][4] === '')
+                {
+                    if (board[9][5] === '' || (board[9][5][0] !== board[row][col][0]))
+                    {
                         moves.push({ row: 9, col: 5 });
                     }
                 }
@@ -483,11 +516,14 @@ var isMoveOk = (function () {
 
         // top right of bottom palace
         if (row === 7 && col === 5) {
-            if (board[8][4] === '' || board[8][4][0] !== board[row][col][0]) {
+            if (board[8][4] === '' || (board[8][4][0] !== board[row][col][0]))
+            {
                 moves.push({ row: 8, col: 4 });
 
-                if (board[8][4] == '') {
-                    if (board[9][3] == '' || board[9][3][0] !== board[row][col][0]) {
+                if (board[8][4] === '')
+                {
+                    if (board[9][3] === '' || (board[9][3][0] !== board[row][col][0]))
+                    {
                         moves.push({ row: 9, col: 3 });
                     }
                 }
@@ -495,12 +531,16 @@ var isMoveOk = (function () {
         }
 
         // bottom left of bottom palace
-        if (row === 9 && col === 3) {
-            if (board[8][4] === '' || board[8][4][0] !== board[row][col][0]) {
+        if (row === 9 && col === 3)
+        {
+            if (board[8][4] === '' || (board[8][4][0] !== board[row][col][0]))
+            {
                 moves.push({ row: 8, col: 4 });
 
-                if (board[8][4] == '') {
-                    if (board[7][5] == '' || board[7][5][0] !== board[row][col][0]) {
+                if (board[8][4] === '')
+                {
+                    if (board[7][5] === '' || (board[7][5][0] !== board[row][col][0]))
+                    {
                         moves.push({ row: 7, col: 5 });
                     }
                 }
@@ -508,12 +548,16 @@ var isMoveOk = (function () {
         }
 
         // bottom right of bottom palace
-        if (row === 9 && col === 5) {
-            if (board[8][4] === '' || board[8][4][0] !== board[row][col][0]) {
+        if (row === 9 && col === 5)
+        {
+            if (board[8][4] === '' || (board[8][4][0] !== board[row][col][0]))
+            {
                 moves.push({ row: 8, col: 4 });
 
-                if (board[8][4] == '') {
-                    if (board[7][3] == '' || board[7][3][0] !== board[row][col][0]) {
+                if (board[8][4] === '')
+                {
+                    if (board[7][3] === '' || (board[7][3][0] !== board[row][col][0]))
+                    {
                         moves.push({ row: 7, col: 3 });
                     }
                 }
@@ -521,23 +565,29 @@ var isMoveOk = (function () {
         }
 
         // center of bottom palace
-        if (row === 8 && col === 4) {
-            if (board[7][3] === '' || board[7][3][0] != board[row][col][0]) {
-                move.push({ row: 7, col: 3 });
+        if (row === 8 && col === 4)
+        {
+            if (board[7][3] === '' || (board[7][3][0] !== board[row][col][0]))
+            {
+                moves.push({ row: 7, col: 3 });
             }
-            if (board[7][5] === '' || board[7][5][0] != board[row][col][0]) {
-                move.push({ row: 7, col: 5 });
+            if (board[7][5] === '' || (board[7][5][0] !== board[row][col][0]))
+            {
+                moves.push({ row: 7, col: 5 });
             }
-            if (board[9][3] === '' || board[9][3][0] != board[row][col][0]) {
-                move.push({ row: 9, col: 3 });
+            if (board[9][3] === '' || (board[9][3][0] !== board[row][col][0]))
+            {
+                moves.push({ row: 9, col: 3 });
             }
-            if (board[9][5] === '' || board[9][5][0] != board[row][col][0]) {
-                move.push({ row: 9, col: 5 });
+            if (board[9][5] === '' || (board[9][5][0] !== board[row][col][0]))
+            {
+                moves.push({ row: 9, col: 5 });
             }
         }
 
         return moves;
     }
+
     function cannonMoves(board, location)
     {
         var row = location.row;
@@ -546,18 +596,18 @@ var isMoveOk = (function () {
 
         // up
         var i = row - 1;
-        while (i >= 0 && board[i][col] == '')
+        while (i >= 0 && (board[i][col] === '') )
         {
             i--;
         }
-        if (i > 0 && board[i][col][1] !== 'C')  // A jump is possible
+        if (i > 0 && (board[i][col][1] !== 'C') )  // A jump is possible; not jumping over a cannon
         {
             var j = i - 1;
-            while (j >= 0 && (board[j][col] == '' || (board[j][col][0] !== board[row][col][0] && board[j][col][1] !== 'C')))
+            while (j >= 0 && (board[j][col] === '' || (board[j][col][0] !== board[row][col][0] && (board[j][col][1] !== 'C') )))
             {
                 moves.push({ row: j, col: col });
 
-                if (board[j][col][0] !== board[row][col][0])
+                if ((board[j][col][0] !== board[row][col][0]) && (board[j][col] !== ''))    // An opponent's piece is blocking further movement
                 {
                     break;
                 }
@@ -568,18 +618,18 @@ var isMoveOk = (function () {
 
         // down
         i = row + 1;
-        while (i < 10 && board[i][col] == '')
+        while (i < 10 && (board[i][col] === '') )
         {
             i++;
         }
-        if (i < 9 && board[i][col][1] !== 'C')  // A jump is possible
+        if (i < 9 && (board[i][col][1] !== 'C') )  // A jump is possible; not jumping over a cannon
         {
             var j = i + 1;
-            while (j <= 9 && (board[j][col] == '' || (board[j][col][0] != board[row][col][0] && board[j][col][1] !== 'C')))
+            while (j <= 9 && (board[j][col] === '' || (board[j][col][0] !== board[row][col][0] && (board[j][col][1] !== 'C') )))
             {
                 moves.push({ row: j, col: col });
 
-                if (board[j][col][0] !== board[row][col][0])
+                if ((board[j][col][0] !== board[row][col][0]) && (board[j][col] !== ''))    // An opponent's piece is blocking further movement
                 {
                     break;
                 }
@@ -590,18 +640,18 @@ var isMoveOk = (function () {
 
         // left
         i = col - 1;
-        while (i >= 0 && board[row][i] == '')
+        while (i >= 0 && (board[row][i] === '') )
         {
             i--;
         }
-        if (i > 0 && board[row][i][1] !== 'C')  // A jump is possible
+        if (i > 0 && (board[row][i][1] !== 'C') )  // A jump is possible; not jumping over a cannon
         {
-            var j = j - 1;
-            while (j >= 0 && (board[row][j] == '' || (board[row][j][0] != board[row][col][0] && board[row][j][1] !== 'C')))
+            var j = i - 1;
+            while (j >= 0 && (board[row][j] === '' || (board[row][j][0] !== board[row][col][0] && (board[row][j][1] !== 'C') )))
             {
                 moves.push({ row: row, col: j });
 
-                if (board[row][j][0] !== board[row][col][0])
+                if ((board[row][j][0] !== board[row][col][0]) && (board[row][j] !== ''))    // An opponent's piece is blocking further movement
                 {
                     break;
                 }
@@ -612,17 +662,19 @@ var isMoveOk = (function () {
 
         // right
         i = col + 1;
-        while (i >= 0 && board[row][i] == '') {
+        while (i < 9 && (board[row][i] === '') )
+        {
             i++;
         }
-        if (i < 8 && board[row][i][1] !== 'C')  // A jump is possible
+        if (i < 8 && (board[row][i][1] !== 'C') )  // A jump is possible; not jumping over a cannon
         {
-            var j = j + 1;
-            while (j <= 8 && (board[row][j] == '' || (board[row][j][0] != board[row][col][0] && board[row][j][1] !== 'C')))
+            var j = i + 1;
+            while (j <= 8 && (board[row][j] === '' || (board[row][j][0] !== board[row][col][0] && (board[row][j][1] !== 'C') )))
             {
                 moves.push({ row: row, col: j });
 
-                if (board[row][j][0] !== board[row][col][0]) {
+                if ((board[row][j][0] !== board[row][col][0]) && (board[row][j] !== ''))    // An opponent's piece is blocking further movement
+                {
                     break;
                 }
 
@@ -631,116 +683,135 @@ var isMoveOk = (function () {
         }
 
         // top left of top palace
-        if (row === 0 && col === 3) {
+        if (row === 0 && col === 3)
+        {
             if (board[1][4] !== '' &&
-                board[1][4][1] !== 'C' && 
-                board[2][5][0] !== board[row][col][0] &&
-                board[2][5][1] !== 'C')
+                (board[1][4][1] !== 'C') && 
+                (board[2][5][0] !== board[row][col][0]) &&
+                (board[2][5][1] !== 'C'))
             {
                 moves.push({ row: 2, col: 5 });
             }
         }
 
         // top right of top palace
-        if (row === 0 && col === 5) {
+        if (row === 0 && col === 5)
+        {
             if (board[1][4] !== '' &&
-                board[1][4][1] !== 'C' &&
-                board[2][3][0] !== board[row][col][0] &&
-                board[2][3][1] !== 'C')
+                (board[1][4][1] !== 'C') &&
+                (board[2][3][0] !== board[row][col][0]) &&
+                (board[2][3][1] !== 'C'))
             {
                 moves.push({ row: 2, col: 3 });
             }
         }
 
         // bottom left of top palace
-        if (row === 2 && col === 3) {
+        if (row === 2 && col === 3)
+        {
             if (board[1][4] !== '' &&
-                board[1][4][1] !== 'C' &&
-                board[0][5][0] !== board[row][col][0] &&
-                board[0][5][1] !== 'C') {
+                (board[1][4][1] !== 'C') &&
+                (board[0][5][0] !== board[row][col][0]) &&
+                (board[0][5][1] !== 'C')) 
+            {
                 moves.push({ row: 0, col: 5 });
             }
         }
 
         // bottom right of top palace
-        if (row === 2 && col === 5) {
+        if (row === 2 && col === 5)
+        {
             if (board[1][4] !== '' &&
-                board[1][4][1] !== 'C' &&
-                board[0][3][0] !== board[row][col][0] &&
-                board[0][3][1] !== 'C') {
+                (board[1][4][1] !== 'C') &&
+                (board[0][3][0] !== board[row][col][0]) &&
+                (board[0][3][1] !== 'C'))
+            {
                 moves.push({ row: 0, col: 3 });
             }
         }
 
         // top left of bottom palace
-        if (row === 7 && col === 3) {
+        if (row === 7 && col === 3)
+        {
             if (board[8][4] !== '' &&
-                board[8][4][1] !== 'C' &&
-                board[9][5][0] !== board[row][col][0] &&
-                board[9][5][1] !== 'C') {
+                (board[8][4][1] !== 'C') &&
+                (board[9][5][0] !== board[row][col][0]) &&
+                (board[9][5][1] !== 'C'))
+            {
                 moves.push({ row: 9, col: 5 });
             }
         }
 
         // top right of bottom palace
-        if (row === 7 && col === 5) {
+        if (row === 7 && col === 5)
+        {
             if (board[8][4] !== '' &&
-                board[8][4][1] !== 'C' &&
-                board[9][3][0] !== board[row][col][0] &&
-                board[9][3][1] !== 'C') {
+                (board[8][4][1] !== 'C') &&
+                (board[9][3][0] !== board[row][col][0]) &&
+                (board[9][3][1] !== 'C'))
+            {
                 moves.push({ row: 9, col: 3 });
             }
         }
 
         // bottom left of bottom palace
-        if (row === 9 && col === 3) {
+        if (row === 9 && col === 3)
+        {
             if (board[8][4] !== '' &&
-                board[8][4][1] !== 'C' &&
-                board[7][5][0] !== board[row][col][0] &&
-                board[7][5][1] !== 'C') {
+                (board[8][4][1] !== 'C') &&
+                (board[7][5][0] !== board[row][col][0]) &&
+                (board[7][5][1] !== 'C'))
+            {
                 moves.push({ row: 7, col: 5 });
             }
         }
 
         // bottom right of bottom palace
-        if (row === 9 && col === 5) {
+        if (row === 9 && col === 5)
+        {
             if (board[8][4] !== '' &&
-                board[8][4][1] !== 'C' &&
-                board[7][3][0] !== board[row][col][0] &&
-                board[7][3][1] !== 'C') {
+                (board[8][4][1] !== 'C') &&
+                (board[7][3][0] !== board[row][col][0]) &&
+                (board[7][3][1] !== 'C'))
+            {
                 moves.push({ row: 7, col: 3 });
             }
         }
 
+        // Cannons cannot jump diagonally from the center of either palaces
+
         return moves;
     }
 
-    function SoldierMoves(board, location)
+    function soldierMoves(board, location)
     {
         var row = location.row;
         var col = location.col;
         var moves = [];
 
         // Determine which color soldier
-        if (board[row][column][0] === 'R')
+        if (board[row][col][0] === 'R')
         {
             // Red soldiers can't move up
             var down = { row: row + 1, col: col };
-            if (down.row < 10 && (board[down.row][down.col][0] !== 'R')) {
+            if (down.row < 10 && (board[down.row][down.col][0] !== 'R'))
+            {
                 moves.push(down);
             }
 
             var left = { row: row, col: col - 1 };
-            if (left.col >= 0 && (board[left.row][left.col][0] !== 'R')) {
+            if (left.col >= 0 && (board[left.row][left.col][0] !== 'R'))
+            {
                 moves.push(left);
             }
 
             var right = { row: row, col: col + 1 };
-            if (right.col < 9 && (board[right.row][right.col][0] !== 'R')) {
+            if (right.col < 9 && (board[right.row][right.col][0] !== 'R'))
+            {
                 moves.push(right);
             }
 
-            // Check diagonal
+            // Check diagonals in palace
             if (((row === 7 && col === 3) ||
                  (row === 7 && col === 5))
                  && (board[8][4][0] !== 'R'))
@@ -748,12 +819,15 @@ var isMoveOk = (function () {
                 moves.push({ row: 8, col: 4 })
             }
 
-            // Check center
-            if (row === 8 && col === 4) {
-                if (board[9][3][0] !== 'R') {
+            // Check center in palace
+            if (row === 8 && col === 4)
+            {
+                if (board[9][3][0] !== 'R')
+                {
                     moves.push({ row: 9, col: 3 });
                 }
-                if (board[9][5][0] !== 'R') {
+                if (board[9][5][0] !== 'R')
+                {
                     moves.push({ row: 9, col: 5 });
                 }
             }
@@ -763,28 +837,32 @@ var isMoveOk = (function () {
         {
             // Blue soldiers can't move down
             var up = { row: row - 1, col: col };
-            if (up.row >= 0 && (board[up.row][up.col][0] !== 'B')) {
+            if (up.row >= 0 && (board[up.row][up.col][0] !== 'B'))
+            {
                 moves.push(up);
             }
 
             var left = { row: row, col: col - 1 };
-            if (left.col >= 0 && (board[left.row][left.col][0] !== 'B')) {
+            if (left.col >= 0 && (board[left.row][left.col][0] !== 'B'))
+            {
                 moves.push(left);
             }
 
             var right = { row: row, col: col + 1 };
-            if (right.col < 9 && (board[right.row][right.col][0] !== 'B')) {
+            if (right.col < 9 && (board[right.row][right.col][0] !== 'B'))
+            {
                 moves.push(right);
             }
 
-            // Check diagonal
+            // Check diagonals in palace
             if (((row === 2 && col === 3) ||
                  (row === 2 && col === 5))
-                 && (board[1][4][0] !== 'B')) {
+                 && (board[1][4][0] !== 'B'))
+            {
                 moves.push({ row: 1, col: 4 })
             }
 
-            // Check center
+            // Check center in palace.
             if (row === 1 && col === 4) 
             {
                 if (board[0][3][0] !== 'B') 
@@ -808,12 +886,13 @@ var isMoveOk = (function () {
     // ============================================================================
 
     // Return the winner (either 'R' or 'B') or '' if there is no winner.
-    // If opposing general is captured, then player wins.
+    // If the opposing general is captured, then current player wins.
     function getWinner(board)
     {
         var RHasGeneral = false;
         var BHasGeneral = false;
 
+        // Only have to check within palace to find general
         for (var i = 0; i < 3; i++)
         {
             for (var j = 3; j < 6; j++)
@@ -830,6 +909,7 @@ var isMoveOk = (function () {
             return 'B';
         }
 
+        // Only have to check within palace to find general
         for (var i = 7; i < 10; i++)
         {
             for (var j = 3; j < 6; j++)
@@ -854,7 +934,7 @@ var isMoveOk = (function () {
     function determineMoves(board, piece)
     {
         var possibleMoves = [];
-        // Find location of piece
+        // Find location of piece before move
         var location = {};
         for (var i = 0; i < 10; i++)
         {
@@ -931,18 +1011,16 @@ var isMoveOk = (function () {
             case 'BS3':
             case 'BS4':
             case 'BS5':
-                possibleMoves = SoldierMoves(board, location);
+                possibleMoves = soldierMoves(board, location);
                 return possibleMoves;
 
         }
 
-        return possibleMoves;
     }
 
-    // Determines whether a piece can be in the claimed location
+    // Determines whether a piece can be in the claimed location and duplicates that move
     function determineLocationPossibleAndMove(board, piece, row, col)
     {
-        console.log("SSSS " + piece + " " + row + " " + col);
         var location = {};
         for (var i = 0; i < 10; i++)
         {
@@ -961,19 +1039,14 @@ var isMoveOk = (function () {
             }
         }
 
-        console.log("SSSA " + location.row + " " + location.col);
-
         // if the current (row, col) is in the list of moves determined by "determineMoves", return the board after move, else throw exception
         var possibleMoves = determineMoves(board, piece);
-
-        console.log("SSSB");
-        console.log(possibleMoves);
 
         if (possibleMoves.length !== 0)
         {
             for (var i = 0; i < possibleMoves.length; i++)
             {
-                if (possibleMoves[i].row === row && possibleMoves[i].col === col)
+                if (possibleMoves[i].row === row && (possibleMoves[i].col === col) )
                 {
                     // Move the piece to the claimed location
                     board[location.row][location.col] = '';
@@ -998,15 +1071,23 @@ var isMoveOk = (function () {
         return (condition1 || condition2);
     }
 
+    // Pieces that can create a draw
+    var drawPieces = ['RG1', 'RU1', 'RU2', 'RC1', 'RC2', 'BG1', 'BU1', 'BU2', 'BC1', 'BC2'];
+
     function isDrawCondition1(board)
     {
         var someCannonCanMove = false;
         var otherPiecesExist = false;
+
+        var aDrawPiece = false;
+
         // Test draw condition 1
         for (var i = 0; i < 10; i++)
         {
             for (var j = 0; j < 9; j++)
             {
+                aDrawPiece = false;
+
                 if (board[i][j] === 'RC1' ||          // red cannon 1
                     board[i][j] === 'RC2' ||          // red cannon 2
                     board[i][j] === 'BC1' ||          // blue cannon 1
@@ -1021,13 +1102,17 @@ var isMoveOk = (function () {
                         someCannonCanMove = true;
                     }
                 }
-                else if (board[i][j] !== 'RG1' ||    // red general
-                         board[i][j] !== 'RU1' ||    // red guard 1
-                         board[i][j] !== 'RU2' ||    // red guard 2
-                         board[i][j] !== 'BG1' ||    // blue general
-                         board[i][j] !== 'BU1' ||    // blue guard 1
-                         board[i][j] !== 'BU2'       // blue guard 2
-                    )
+
+                // test and see if the current piece is a "draw" piece
+                for (var k = 0; k < 10; k++)
+                {
+                    if (board[i][j] === drawPieces[k])
+                    {
+                        aDrawPiece = true;
+                    }
+                }
+
+                if (aDrawPiece == false && (board[i][j] !== '') )
                 {
                     // Some piece other than generals, guards, and cannons are still on the board.
                     otherPiecesExist = true;
@@ -1035,7 +1120,7 @@ var isMoveOk = (function () {
             }
         }
 
-        if (someCannonCanMove === false && otherPiecesExist == false)
+        if (someCannonCanMove === false && (otherPiecesExist === false) )
         {
             // Draw condition 1 is true.
             return true;
@@ -1047,27 +1132,32 @@ var isMoveOk = (function () {
     {
         // Test draw condition 2
         // Search for red general
-        for (var i = 0; i < 3; i++) {
-            for (var j = 3; j < 6; j++) {
-                if (board[i][j] === 'RG1') {
+        for (var i = 0; i < 3; i++)
+        {
+            for (var j = 3; j < 6; j++)
+            {
+                if (board[i][j] === 'RG1')
+                {
                     // Red general found at (i, j), is blue general straight ahead?
-                    for (var k = i; k < 10; k++) {
-                        if (board[k][j] !== '') {
-                            // Some piece is in between the generals
-                            return false;
-                        }
-
+                    for (var k = i + 1; k < 10; k++)
+                    {
                         if (board[k][j] === 'BG1') {
                             // The red general is facing the blue general unobstructed
                             return true;
                         }
+
+                        if (board[k][j] !== '')
+                        {
+                            // Some piece is in between the generals
+                            return false;
+                        }                
                     }
                     // No need to check other spots
                     break;
                 }
             }
         }
-        // Not in a tie state after current move; no pieces in line with red general
+        // Not in a tie state after current move; no pieces in line with red general; or red general is captured
         return false;
     }
 
@@ -1075,7 +1165,8 @@ var isMoveOk = (function () {
     function createMove(board, piece, row, col, turnIndexBeforeMove)
     {
         // At the beginning of the match, stateBeforeMove is {}.
-        if (board === undefined) {
+        if (board === undefined)
+        {
             board = [['RR1', 'RH1', 'RE1', 'RU1', '', 'RU2', 'RE2', 'RH2', 'RR2'],
                      ['', '', '', '', 'RG1', '', '', '', ''],
                      ['', 'RC1', '', '', '', '', '', 'RC2', ''],
@@ -1083,10 +1174,12 @@ var isMoveOk = (function () {
                      ['', '', '', '', '', '', '', '', ''],
                      ['', '', '', '', '', '', '', '', ''],
                      ['BS1', '', 'BS2', '', 'BS3', '', 'BS4', '', 'BS5'],
-                     ['', 'BC1', '', '', '', '', '', 'BC2', ''], ['', '', '', '', 'BG1', '', '', '', ''],
+                     ['', 'BC1', '', '', '', '', '', 'BC2', ''],
+                     ['', '', '', '', 'BG1', '', '', '', ''],
                      ['BR1', 'BH1', 'BE1', 'BU1', '', 'BU2', 'BE2', 'BH2', 'BR2']]
         }
 
+        // Just copying board before move; "boardAfterMove" doesn't include the new move yet
         var boardAfterMove = copyObject(board);
 
         // Test legitimacy of move
@@ -1094,11 +1187,12 @@ var isMoveOk = (function () {
 
         var winner = getWinner(boardAfterMove);
         var firstOperation;
+
         if (winner !== '' || isDraw(board, boardAfterMove))
         {
             // Game over.
             firstOperation = {endMatch: {endMatchScores:
-                        (winner === 'B' ? [1, 0] : (winner === 'R' ? [0, 1] : [0, 0])) }}
+                        (winner === 'R' ? [1, 0] : (winner === 'B' ? [0, 1] : [0, 0])) }}
         }
         else
         {
@@ -1119,7 +1213,7 @@ var isMoveOk = (function () {
         var turnIndexBeforeMove = params.turnIndexBeforeMove;
         var stateBeforeMove = params.stateBeforeMove;
 
-        //try
+        try
         {
             var deltaValue = move[2].set.value;
             var piece = deltaValue.piece;
@@ -1128,34 +1222,101 @@ var isMoveOk = (function () {
             var board = stateBeforeMove.board;
 
             // Verify that players are moving their own pieces
-            if ((turnIndexBeforeMove === 0 && piece[1] === 'B')
-                || (turnIndexBeforeMove === 1 && piece[1] === 'R'))
+            if ((turnIndexBeforeMove === 0 && piece[0] === 'B')
+                || (turnIndexBeforeMove === 1 && piece[0] === 'R'))
             {
                 throw new Error("Invalid attempt to move opponent's piece!")
             }
 
             // Attempt to recreate move to validate legitimacy.
+            // Can possibly move checking whether players are moving their own pieces to "createMove"
             var expectedMove = createMove(board, piece, row, col, turnIndexBeforeMove);
-
-            console.log(move);
-            console.log(expectedMove);
 
             if (!isEqual(move, expectedMove))
             {
-                console.log("POINT A - MOVES NOT EQUAL")
+                //console.log("POINT A - MOVES NOT EQUAL");
                 return false;
             }
 
         }
-        //catch (e)
+        catch (e)
         {
-            console.log("POINTS B - EXCEPTION!")
+            //console.log("POINTS B - EXCEPTION!");
+            //console.log(e);
             return false;
         }
 
         return true;
     }
 
-    return isMoveOk;
-})();
 
+    function getExampleMoves(initialTurnIndex, initialState, arrayOfPieceRowColComment)
+    {
+        var exampleMoves = [];
+        var state = initialState;
+        var turnIndex = initialTurnIndex;
+
+        for(var i = 0; i < arrayOfPieceRowColComment.length; i++)
+        {
+            var pieceRowColComment = arrayOfPieceRowColComment[i];
+            var move = createMove(state.board, pieceRowColComment.piece, pieceRowColComment.row, pieceRowColComment.col, turnIndex);
+            exampleMoves.push({
+                stateBeforeMove: state,
+                turnIndexBeforeMove: turnIndex,
+                move: move,
+                comment: { en: pieceRowColComment.comment }
+            });
+            state = { board: move[1].set.value, delta: move[2].set.value };
+            turnIndex = 1 - turnIndex;
+        }
+
+        return exampleMoves;
+    }
+
+    function getRiddles()
+    {
+        return [
+            getExampleMoves(1,
+                {   board: [['', '', '', '', 'RG1', '', '', '', ''],
+                        ['', '', '', '', '', '', '', '', ''],
+                        ['', '', '', '', '', '', '', '', ''],
+                        ['BR1', '', '', '', '', 'BH1', '', '', 'BR2'],
+                        ['', '', '', '', '', '', '', '', ''],
+                        ['', '', '', '', '', '', '', '', ''],
+                        ['', '', '', '', '', '', '', '', ''],
+                        ['', '', '', '', '', '', '', '', ''],
+                        ['', '', '', '', 'BU1', '', '', '', ''],
+                        ['', '', '', '', 'BG1', '', '', '', '']]
+                },
+                [
+                    { piece: 'BR1', row: 1, col: 0, comment: "Align this chariot to aid the other chariot's next move." },
+                    { piece: 'RG1', row: 0, col: 3, comment: "Red is desperate to keep going."},
+                    { piece: 'BR2', row: 0, col: 8, comment: "Place this chariot strategically to force red into submission." },
+                    { piece: 'RG1', row: 0, col: 4, comment: "Red is out of moves." },
+                    { piece: 'BR2', row: 0, col: 4, comment: "Blue wins by capturing the red general!" }
+                ])
+        ];
+    }
+
+    function getExampleGame()
+    {
+        return getExampleMoves(0, {},
+            [
+            { piece: 'RR1', row: 1, col: 0, comment: "Red getting the chariot out of the corner." },
+            { piece: 'BR1', row: 8, col: 0, comment: "Ditto the red move." },
+            { piece: 'RU1', row: 1, col: 3, comment: "Get the guards ready." },
+            { piece: 'BS2', row: 6, col: 1, comment: "Soldiers need to move aside." },
+            { piece: 'RS1', row: 3, col: 1, comment: "Prepare a compromise." },
+            { piece: 'BC1', row: 3, col: 1, comment: "Capture a red soldier." },
+            { piece: 'RS2', row: 3, col: 1, comment: "Capture a blue cannon." }
+            ]
+        );
+    }
+
+
+    //return { isMoveOk: isMoveOk , getExampleGame: getExampleGame, getRiddles: getRiddles};
+
+    this.isMoveOk = isMoveOk;
+    this.getExampleGame = getExampleGame;
+    this.getRiddles = getRiddles;
+});
