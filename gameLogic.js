@@ -1161,22 +1161,32 @@ angular.module('myApp.gameLogic', []).service('gameLogic', function() {
         return false;
     }
 
+    function getPieceAt(row, col)
+    {
+        
+    }
+
+    function getInitialBoard()
+    {
+        return [['RR1', 'RH1', 'RE1', 'RU1', '', 'RU2', 'RE2', 'RH2', 'RR2'],
+                ['', '', '', '', 'RG1', '', '', '', ''],
+                ['', 'RC1', '', '', '', '', '', 'RC2', ''],
+                ['RS1', '', 'RS2', '', 'RS3', '', 'RS4', '', 'RS5'],
+                ['', '', '', '', '', '', '', '', ''],
+                ['', '', '', '', '', '', '', '', ''],
+                ['BS1', '', 'BS2', '', 'BS3', '', 'BS4', '', 'BS5'],
+                ['', 'BC1', '', '', '', '', '', 'BC2', ''],
+                ['', '', '', '', 'BG1', '', '', '', ''],
+                ['BR1', 'BH1', 'BE1', 'BU1', '', 'BU2', 'BE2', 'BH2', 'BR2']];
+    }
+
     // Recreate user claimed move to verify legitimacy of move
     function createMove(board, piece, row, col, turnIndexBeforeMove)
     {
         // At the beginning of the match, stateBeforeMove is {}.
         if (board === undefined)
         {
-            board = [['RR1', 'RH1', 'RE1', 'RU1', '', 'RU2', 'RE2', 'RH2', 'RR2'],
-                     ['', '', '', '', 'RG1', '', '', '', ''],
-                     ['', 'RC1', '', '', '', '', '', 'RC2', ''],
-                     ['RS1', '', 'RS2', '', 'RS3', '', 'RS4', '', 'RS5'],
-                     ['', '', '', '', '', '', '', '', ''],
-                     ['', '', '', '', '', '', '', '', ''],
-                     ['BS1', '', 'BS2', '', 'BS3', '', 'BS4', '', 'BS5'],
-                     ['', 'BC1', '', '', '', '', '', 'BC2', ''],
-                     ['', '', '', '', 'BG1', '', '', '', ''],
-                     ['BR1', 'BH1', 'BE1', 'BU1', '', 'BU2', 'BE2', 'BH2', 'BR2']]
+            board = getInitialBoard();
         }
 
         // Just copying board before move; "boardAfterMove" doesn't include the new move yet
@@ -1319,4 +1329,7 @@ angular.module('myApp.gameLogic', []).service('gameLogic', function() {
     this.isMoveOk = isMoveOk;
     this.getExampleGame = getExampleGame;
     this.getRiddles = getRiddles;
+
+    this.getInitialBoard = getInitialBoard;
+    this.createMove = createMove;
 });

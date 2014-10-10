@@ -1,0 +1,101 @@
+table {
+  border-collapse: collapse;
+}
+body {
+  margin: 0px;
+  padding: 0px;
+}
+.cell {
+  vertical-align: middle;
+  width: 100px;
+  height: 100px;
+  margin: 0px;
+  border: none;
+  padding: 0px;
+  z-index: -1;
+}
+
+.middle {
+  background-image: url('images/board/cross.png');
+}
+
+.top {
+  background-image: url('images/board/topborder.png');
+}
+
+.bottom {
+  background-image: url('images/board/bottomborder.png');
+}
+
+.left {
+  background-image: url('images/board/leftborder.png');
+}
+
+.right {
+  background-image: url('images/board/rightborder.png');
+}
+
+.topleft {
+  background-image: url('images/board/topleft.png');
+}
+
+.topright {
+  background-image: url('images/board/topright.png');
+}
+
+.bottomleft {
+  background-image: url('images/board/bottomleft.png');
+}
+
+.bottomright {
+  background-image: url('images/board/bottomright.png');
+}
+
+.center {
+  background-image: url('images/board/center.png')
+}
+
+.rtopright {
+  background-image: url('images/board/rtopright.png');
+}
+
+.rtopleft {
+  background-image: url('images/board/rtopleft.png');
+}
+
+.rbottomleft {
+  background-image: url('images/board/rbottomleft.png');
+}
+
+.rbottomright {
+  background-image: url('images/board/rbottomright.png');
+}
+
+.btopleft {
+  background-image: url('images/board/btopleft.png');
+}
+
+.btopright {
+  background-image: url('images/board/btopright.png');
+}
+
+.bbottomleft {
+  background-image: url('images/board/bbottomleft.png');
+}
+
+.bbottomright {
+  background-image: url('images/board/bbottomright.png');
+}
+
+.piece {
+  max-width: 85%;
+  max-height: 85%;
+  position: relative;
+  align-content: center;
+  left: 7%;
+  z-index: 1;
+}
+
+.test {
+  border: 1pt solid black;
+}

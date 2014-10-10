@@ -10,31 +10,40 @@
   <script src="game.js"></script>
   <script src="gameLogic.js"></script>
   <script src="messageService.js"></script>
+  <script src="scaleBodyService.js"></script>
   <!-- for local testing purposes ! -->
   <script src="http://yoav-zibin.github.io/emulator/platform.js"></script>
+  <link rel="stylesheet" type="text/css" href="game.css"
 </head>
 <body ng-controller="Ctrl">
-  <textarea ng-model="jsonState" rows=10 cols=100 readonly></textarea>
-  <table border="1">
-    <tr width="40px" height="40px" ng-repeat="row in board track by $index">
-      <td width="40px" height="40px" ng-repeat="cell in row track by $index">&nbsp; {{cell}} &nbsp;</td>
+  <table>
+    <tr ng-repeat="row in board track by $index">
+        <td ng-repeat="cell in row track by $index"
+            ng-class="{cell: true,
+                    middle: ($parent.$index > 0 && $parent.$index < 9) && ($index > 0 && $index < 8),
+                    top: ($parent.$index === 0),
+                    bottom: ($parent.$index === 9),
+                    left: ($index === 0 && $parent.$index !== 0 && $parent.$index !== 9),
+                    right: ($index === 8 && $parent.$index !== 0 && $parent.$index !== 9),
+                    topleft: ($parent.$index === 0 && $index === 0),
+                    topright: ($parent.$index === 0 && $index === 8),
+                    bottomleft: ($parent.$index === 9 && $index === 0),
+                    bottomright: ($parent.$index === 9 && $index === 8),
+                    center: ($parent.$index === 1 && $index === 4) || ($parent.$index === 8 && $index === 4),
+                    rtopleft: ($parent.$index === 0 && $index === 3),
+                    rtopright: ($parent.$index === 0 && $index === 5),
+                    rbottomleft: ($parent.$index === 2 && $index === 3),
+                    rbottomright: ($parent.$index === 2 && $index === 5),
+                    btopleft: ($parent.$index === 7 && $index === 3),
+                    btopright: ($parent.$index === 7 && $index === 5),
+                    bbottomleft: ($parent.$index === 9 && $index === 3),
+                    bbottomright: ($parent.$index === 9 && $index === 5)
+            }"
+            ng-click="cellClicked($parent.$index, $index)">
+            <img class="piece" ng-src="{{(board[$parent.$index][$index] == '' ? 'images/empty.png' : 'images/' + board[$parent.$index][$index][0] + board[$parent.$index][$index][1] + '.png')}}">
+
+        </td>
     </tr>
   </table>
-  <textarea rows=10 cols=100 readonly>
-    All operations in GameApi:
-    [
-      {setTurn: {turnIndex: 1}},
-      {set: {key: "k", value: "v"}},
-      {endMatch: {endMatchScores: [42, -2]}},
-      {set: {key: "k", value: "v", visibleToPlayerIndexes: [0]}},
-      {setVisibility: {key: "k", visibleToPlayerIndexes: null}},
-      {shuffle: {keys: ["k1", "k2"]}},
-      {setRandomInteger: {key: "k", from: 0, to: 6}},
-      {"delete": {key: "k"}}
-    ]
-  </textarea>
-  <textarea ng-model="move" rows=10 cols=100></textarea>
-  <br>
-  <button ng-click="makeMove()">Make move</button>
 </body>
 </html>
