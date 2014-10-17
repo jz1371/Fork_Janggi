@@ -1326,10 +1326,45 @@ angular.module('myApp.gameLogic', []).service('gameLogic', function() {
 
     //return { isMoveOk: isMoveOk , getExampleGame: getExampleGame, getRiddles: getRiddles};
 
+    function createComputerMove(board, turnIndexBeforeMove)
+    {
+        if (turnIndexBeforeMove == 0)
+            var color = 'R';
+        else if (turnIndexBeforeMove == 1)
+            var color = 'B';
+
+        var possibleMoves = [];
+        for (var i = 0; i < 10; i++)
+        {
+            for (var j = 0; j < 9; j++)
+            {
+                try
+                {
+                    if (board[i][j][0] === color)
+                    {
+                        var currentPieceMoves = determineMoves(board, board[i][j]);
+                        for (var k = 0; k < currentPieceMoves.length; k++)
+                        {
+                            possibleMoves.push(createMove(board, board[i][j], currentPieceMoves[k].row, currentPieceMoves[k].col, turnIndexBeforeMove));
+                        }
+                    }
+                }
+                catch (e)
+                {
+                }
+            }
+        }
+        var randomMove = possibleMoves[Math.floor(Math.random() * possibleMoves.length)];
+        return randomMove;
+    }
+
+
     this.isMoveOk = isMoveOk;
     this.getExampleGame = getExampleGame;
     this.getRiddles = getRiddles;
 
     this.getInitialBoard = getInitialBoard;
     this.createMove = createMove;
+    this.determineMoves = determineMoves;
+    this.createComputerMove = createComputerMove;
 });

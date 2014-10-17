@@ -1,24 +1,31 @@
 ﻿<!DOCTYPE html>
-<html lang="en" ng-app="myApp">
+<html manifest="game.appcache" lang="en" ng-app="myApp">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Janggi</title>
   <meta name="description" content="Janggi game">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script src="components/angular/angular.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.21/angular.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.21/angular-touch.min.js"></script>
+    <script src="http://sh2514.github.io/Janggi/angular-dragdrop.1.0.8.min.js"></script>
   <script src="game.js"></script>
   <script src="gameLogic.js"></script>
-  <script src="messageService.js"></script>
-  <script src="scaleBodyService.js"></script>
+    <script src="http://sh2514.github.io/Janggi/messageService.js"></script>
+    <script src="http://sh2514.github.io/Janggi/scaleBodyService.js"></script>
   <!-- for local testing purposes ! -->
   <script src="http://yoav-zibin.github.io/emulator/platform.js"></script>
-  <link rel="stylesheet" type="text/css" href="game.css"
+  <link rel="stylesheet" type="text/css" href="game.css" />
 </head>
 <body ng-controller="Ctrl">
+  <div><h1>Janggi</h1></div>
+  <div><button ng-click="toggleAI()">Toggle AI</button></div>
   <table>
     <tr ng-repeat="row in board track by $index">
-        <td ng-repeat="cell in row track by $index"
+        <td data-drop="movable[$parent.$index][$index]" jqyoui-droppable="{onDrop: 'onDropCallback($parent.$index, $index)'}"
+            ng-repeat="cell in row track by $index"
             ng-class="{cell: true,
                     middle: ($parent.$index > 0 && $parent.$index < 9) && ($index > 0 && $index < 8),
                     top: ($parent.$index === 0),
@@ -40,7 +47,8 @@
                     bbottomright: ($parent.$index === 9 && $index === 5)
             }"
             ng-click="cellClicked($parent.$index, $index)">
-            <img class="piece" ng-src="{{(board[$parent.$index][$index] == '' ? 'images/empty.png' : 'images/' + board[$parent.$index][$index][0] + board[$parent.$index][$index][1] + '.png')}}">
+            <img data-drag="true" jqyoui-draggable="{onStart: 'onStartCallback($parent.$index, $index)'}" data-jqyoui-options="{revert: 'invalid'}" 
+                 id="real" ng-class="{piece:true}" ng-src="{{(board[$parent.$index][$index] == '' ? 'images/empty.png' : 'images/' + board[$parent.$index][$index][0] + board[$parent.$index][$index][1] + '.png')}}">
 
         </td>
     </tr>

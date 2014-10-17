@@ -99,3 +99,381 @@ body {
 .test {
   border: 1pt solid black;
 }
+
+/*====================================================
+  Animations (I used some of the grader's code here)
+====================================================*/
+
+.testing
+{
+    -webkit-animation: testing .5s linear forwards;
+    animation: testing 0.5s linear forwards;
+}
+
+
+
+.move_up {
+    -webkit-animation: move_up 0.4s linear fowards;
+    animation: move_up 0.4s linear forwards;
+}
+
+.move_down {
+    -webkit-animation: move_down 0.4s linear fowards;
+    animation: move_down 0.4s linear forwards;
+}
+
+.move_left {
+    -webkit-animation: move_left 0.4s linear fowards;
+    animation: move_left 0.4s linear forwards;
+}
+
+.move_right {
+    -webkit-animation: move_right 0.4s linear fowards;
+    animation: move_right 0.4s linear forwards;
+}
+
+.move_up_left {
+    -webkit-animation: move_up_left 0.4s linear fowards;
+    animation: move_up_left 0.4s linear forwards;
+}
+
+.move_up_right {
+    -webkit-animation: move_up_right 0.4s linear fowards;
+    animation: move_up_right 0.4s linear forwards;
+}
+
+.move_down_left {
+    -webkit-animation: move_down_left 0.4s linear fowards;
+    animation: move_down_left 0.4s linear forwards;
+}
+
+.move_down_right {
+    -webkit-animation: move_down_right 0.4s linear fowards;
+    animation: move_down_right 0.4s linear forwards;
+}
+
+
+
+
+
+@-webkit-keyframes testing {
+    0% {
+        top:0;
+        left:0;
+    }
+    50%{
+        max-width: 140%;
+        top: -50%;
+        left: -50%;
+    }
+    100%{
+        max-width: 85%;
+        top: -100%;
+        left: -100%;
+    }
+}
+
+@keyframes testing {
+    0% {
+        top:0;
+        left:0;
+    }
+    50%{
+        max-width: 140%;
+        top: -50%;
+        left: -50%;
+    }
+    100%{
+        max-width: 85%;
+        top: -100%;
+        left: -100%;
+    }
+}
+
+
+
+@-webkit-keyframes move_up {
+  0% {
+    top: 0;
+    left: 0;
+  }
+  50% {
+    max-width: 140%;
+    top: -50%;
+    left: 0%
+  }
+  100% {
+    max-width: 85%;
+    top: -100%;
+    left: 0%
+  }
+}
+
+@keyframes move_up {
+  0% {
+    top: 0;
+    left: 0;
+  }
+  50% {
+    max-width: 140%;
+    top: -50%;
+    left: 0%
+  }
+  100% {
+    max-width: 85%;
+    top: -100%;
+    left: 0%
+  }
+}
+
+
+
+@-webkit-keyframes move_down {
+  0% {
+    top: 0;
+    left: 0;
+  }
+  50% {
+    max-width: 140%;
+    top: 50%;
+    left: 0%
+  }
+  100% {
+    max-width: 85%;
+    top: 100%;
+    left: 0%
+  }
+}
+
+@keyframes move_down {
+  0% {
+    top: 0;
+    left: 0;
+  }
+  50% {
+    max-width: 140%;
+    top: 50%;
+    left: 0%
+  }
+  100% {
+    max-width: 85%;
+    top: 100%;
+    left: 0%
+  }
+}
+
+
+
+@-webkit-keyframes move_left {
+  0% {
+    top: 0;
+    left: 0;
+  }
+  50% {
+    max-width: 140%;
+    top: 0%;
+    left: -50%
+  }
+  100% {
+    max-width: 85%;
+    top: 0%;
+    left: -100%
+  }
+}
+
+@keyframes move_left {
+  0% {
+    top: 0;
+    left: 0;
+  }
+  50% {
+    max-width: 140%;
+    top: 0%;
+    left: -50%
+  }
+  100% {
+    max-width: 85%;
+    top: 0%;
+    left: -100%
+  }
+}
+
+
+
+@-webkit-keyframes move_right {
+  0% {
+    top: 0;
+    left: 0;
+  }
+  50% {
+    max-width: 140%;
+    top: 0%;
+    left: 50%
+  }
+  100% {
+    max-width: 85%;
+    top: 0%;
+    left: 100%
+  }
+}
+
+@keyframes move_right {
+  0% {
+    top: 0;
+    left: 0;
+  }
+  50% {
+    max-width: 140%;
+    top: 0%;
+    left: 50%
+  }
+  100% {
+    max-width: 85%;
+    top: 0%;
+    left: 100%
+  }
+}
+
+
+
+@-webkit-keyframes move_up_left {
+  0% {
+    top: 0;
+    left: 0;
+  }
+  50% {
+    max-width: 140%;
+    top: -50%;
+    left: -50%
+  }
+  100% {
+    max-width: 85%;
+    top: -100%;
+    left: -100%
+  }
+}
+
+@keyframes move_up_left {
+  0% {
+    top: 0;
+    left: 0;
+  }
+  50% {
+    max-width: 140%;
+    top: -50%;
+    left: -50%
+  }
+  100% {
+    max-width: 85%;
+    top: -100%;
+    left: -100%
+  }
+}
+
+
+
+@-webkit-keyframes move_up_right {
+  0% {
+    top: 0;
+    left: 0;
+  }
+  50% {
+    max-width: 140%;
+    top: -50%;
+    left: 50%
+  }
+  100% {
+    max-width: 85%;
+    top: -100%;
+    left: 100%
+  }
+}
+
+@keyframes move_up_right {
+  0% {
+    top: 0;
+    left: 0;
+  }
+  50% {
+    max-width: 140%;
+    top: -50%;
+    left: 50%
+  }
+  100% {
+    max-width: 85%;
+    top: -100%;
+    left: 100%
+  }
+}
+
+
+
+@-webkit-keyframes move_down_left {
+  0% {
+    top: 0;
+    left: 0;
+  }
+  50% {
+    max-width: 140%;
+    top: 50%;
+    left: -50%
+  }
+  100% {
+    max-width: 85%;
+    top: 100%;
+    left: -100%
+  }
+}
+
+@keyframes move_down_left {
+  0% {
+    top: 0;
+    left: 0;
+  }
+  50% {
+    max-width: 140%;
+    top: 50%;
+    left: -50%
+  }
+  100% {
+    max-width: 85%;
+    top: 100%;
+    left: -100%
+  }
+}
+
+
+
+@-webkit-keyframes move_down_right {
+  0% {
+    top: 0;
+    left: 0;
+  }
+  50% {
+    max-width: 140%;
+    top: 50%;
+    left: 50%
+  }
+  100% {
+    max-width: 85%;
+    top: 100%;
+    left: 100%
+  }
+}
+
+@keyframes move_down_right {
+  0% {
+    top: 0;
+    left: 0;
+  }
+  50% {
+    max-width: 140%;
+    top: 50%;
+    left: 50%
+  }
+  100% {
+    max-width: 85%;
+    top: 100%;
+    left: 100%
+  }
+}
