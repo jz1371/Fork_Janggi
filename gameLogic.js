@@ -45,9 +45,11 @@
     
 */
 
-angular.module('myApp.gameLogic', []).service('gameLogic', function() {
+'use strict';
+
+angular.module('myApp').service('gameLogic', function() {
 //var Janggi = (function () {
-    'use strict';
+    //'use strict';
 
     // ============================================================================
     // Utility
@@ -1359,12 +1361,12 @@ angular.module('myApp.gameLogic', []).service('gameLogic', function() {
     }
 
 
+    this.getInitialBoard = getInitialBoard;
+    this.createComputerMove = createComputerMove;
+    this.createMove = createMove;
     this.isMoveOk = isMoveOk;
     this.getExampleGame = getExampleGame;
     this.getRiddles = getRiddles;
-
-    this.getInitialBoard = getInitialBoard;
-    this.createMove = createMove;
     this.determineMoves = determineMoves;
-    this.createComputerMove = createComputerMove;
+    
 });

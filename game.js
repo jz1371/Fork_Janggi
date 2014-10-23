@@ -1,11 +1,10 @@
 'use strict';
 
 // TODO: remove stateService before launching the game.
-angular.module('myApp',
-    ['myApp.messageService', 'myApp.gameLogic', 'myApp.scaleBodyService', 'platformApp', 'ngTouch', 'ngDragDrop'])
-  .controller('Ctrl', function (
+angular.module('myApp')
+    .controller('Ctrl', function (
       $window, $scope, $log, $animate, $timeout,
-      messageService, scaleBodyService, stateService, gameLogic) {
+      gameService, scaleBodyService, gameLogic) {
 
       var moveAudio = new Audio('audio/move.wav');
       moveAudio.load();
@@ -31,8 +30,7 @@ angular.module('myApp',
 
       function sendComputerMove()
       {
-          var theMove = gameLogic.createComputerMove($scope.board, $scope.turnIndex)
-          sendMakeMove(theMove);
+          gameService.makeMove(gameLogic.createComputerMove($scope.board, $scope.turnIndex));
       }
 
     // Used to determine whether a square on the board is valid to move to.
@@ -49,6 +47,7 @@ angular.module('myApp',
 
     $scope.pieceDragged;
 
+    // Angular dragdrop version
     $scope.onStartCallback = function ()
     {
         // reset previous values
@@ -79,6 +78,37 @@ angular.module('myApp',
         calculateMovable(arguments[2], arguments[3]);
     }
 
+    // ng-draggable version
+    $scope.onStartCallback2 = function (row, col)
+    {
+        for (var i = 0; i < 10; i++)
+        {
+            for (var j = 0; j < 9; j++)
+            {
+                $scope.movable[i][j] = false;
+            }
+        }
+
+        $scope.pieceDragged = $scope.board[row][col];
+        $scope.pieceDraggedLocation = { row: row, col: col };
+
+        if ($scope.pieceDragged[0] == "R")
+            var playerIndex = 0;
+        else if ($scope.pieceDragged[0] == "B")
+            var playerIndex = 1;
+        else
+            return;
+ 
+        $log.info("Moved " + $scope.pieceDragged + " at " + row + " " + col);
+
+        // if not moving the right colored piece, just return
+        if (($scope.turnIndex) != playerIndex)
+            return;
+        // else compute possible moves
+        calculateMovable(row, col);
+    }
+    
+    // Angular dragdrop version
     $scope.onDropCallback = function ()
     {
         $scope.pieceToMove = $scope.pieceDragged;
@@ -92,6 +122,24 @@ angular.module('myApp',
             $scope.turnColor = 'B';
 
         $scope.cellClicked(arguments[2], arguments[3]);
+    }
+
+    // ng-draggable version
+    $scope.onDropCallback2 = function (row, col)
+    {
+        if (!$scope.movable[row][col])
+            return;
+        $scope.pieceToMove = $scope.pieceDragged;
+        $scope.pieceToMoveLocation = $scope.pieceDraggedLocation;
+        $log.info(row + " " + col);
+        $scope.firstClicked = true;
+
+        if ($scope.turnIndex === 0)
+            $scope.turnColor = 'R';
+        else if ($scope.turnIndex === 1)
+            $scope.turnColor = 'B';
+
+        $scope.cellClicked(row, col);
     }
 
     function calculateMovable(row, col)
@@ -129,6 +177,7 @@ angular.module('myApp',
         }
     }
 
+    /*
     function sendMakeMove(move)
     {
         $log.info(["Making move:", move]);
@@ -142,8 +191,10 @@ angular.module('myApp',
         }
 
     }
+    */
 
-    updateUI({stateAfterMove: {}, turnIndexAfterMove: 0, yourPlayerIndex: -2});
+    updateUI({ stateAfterMove: {}, turnIndexAfterMove: 0, yourPlayerIndex: -2 });
+    /*
     var game = {
       gameDeveloperEmail: "shu0018sh2514@gmail.com",
       minNumberOfPlayers: 2,
@@ -151,6 +202,7 @@ angular.module('myApp',
       exampleGame: gameLogic.getExampleGame(),
       riddles: gameLogic.getRiddles()
     };
+    */
 
     $scope.cellClicked = function (row, col) {
         $log.info(["Clicked on cell:", row, col]);
@@ -214,8 +266,19 @@ angular.module('myApp',
         }
     };
 
-    scaleBodyService.scaleBody({ width: 900, height: 1000});
+    //scaleBodyService.scaleBody({ width: 900, height: 1120 });
 
+    gameService.setGame({
+        gameDeveloperEmail: "shu0018sh2514@gmail.com",
+        minNumberOfPlayers: 2,
+        maxNumberOfPlayers: 2,
+        exampleGame: gameLogic.getExampleGame(),
+        riddles: gameLogic.getRiddles(),
+        isMoveOk: gameLogic.isMoveOk,
+        updateUI: updateUI
+    });
+    
+    /*
     if (isLocalTesting) {
       game.isMoveOk = gameLogic.isMoveOk;
       game.updateUI = updateUI;
@@ -232,11 +295,13 @@ angular.module('myApp',
 
       messageService.sendMessage({gameReady : game});
     }
+    */
     
     function animateIt(thePiece, move)
     {
         $log.info("PIECE = " + ('#' + thePiece));
-        $animate.addClass(('#' + thePiece), 'testing', sendMakeMove(move));
+        //$animate.addClass(('#' + thePiece), 'testing', sendMakeMove(move));
+        $animate.addClass(('#' + thePiece), 'testing', gameService.makeMove(move));
     }
 
   });
