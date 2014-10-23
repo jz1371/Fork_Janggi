@@ -266,7 +266,7 @@ angular.module('myApp')
         }
     };
 
-    //scaleBodyService.scaleBody({ width: 900, height: 1120 });
+    scaleBodyService.scaleBody({ width: 900, height: 1120 });
 
     gameService.setGame({
         gameDeveloperEmail: "shu0018sh2514@gmail.com",
