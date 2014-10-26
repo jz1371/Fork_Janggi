@@ -9,6 +9,23 @@ angular.module('myApp')
       var moveAudio = new Audio('audio/move.wav');
       moveAudio.load();
     
+      $scope.animatePieceLocation;
+      $scope.secondClicked = false;
+      $scope.getStyle = function (row, col, flag)
+      {
+          $log.info(row + " " + col + " " + flag);
+          if ($scope.secondClicked && (row === $scope.animatePieceLocation.row && col === $scope.animatePieceLocation.col))
+          {
+              return {
+                  "-webkit-animation": "testing .5s linear",
+                  "animation": "testing .5s linear"
+              };
+          }
+          else
+          {
+              return {};
+          }
+      }
 
       // On the NEXT turn, the AI will move the blue pieces
       $scope.AI = false;
@@ -239,8 +256,10 @@ angular.module('myApp')
                 $scope.isYourTurn = false;
                 
                 delete $scope.firstClicked;
+                $scope.secondClicked = true;
                 // Show animations and only then send makeMove.
                 animateIt($scope.pieceToMove, move);
+                $scope.animatePieceLocation = { row: row, col: col };
                 delete $scope.pieceToMove;
                 delete $scope.pieceToMoveLocation;
                 //sendMakeMove(move);
@@ -252,6 +271,7 @@ angular.module('myApp')
                 $scope.pieceToMove = $scope.board[row][col];
                 $scope.pieceToMoveLocation = {row: row, col: col};
                 $scope.firstClicked = true;
+                $scope.secondClicked = false;
                 $log.info(["pieceToMove:", $scope.pieceToMove]);
             }
             else
