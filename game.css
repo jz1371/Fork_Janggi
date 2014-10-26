@@ -158,8 +158,8 @@ body {
 
 @-webkit-keyframes testing {
     0% {
-        top:0;
-        left:0;
+        top: -100%;
+        left: 0;
     }
     50%{
         max-width: 140%;
@@ -168,8 +168,8 @@ body {
     }
     100%{
         max-width: 85%;
-        top: -100%;
-        left: -100%;
+        top: 0;
+        left: 0;
     }
 }
 
