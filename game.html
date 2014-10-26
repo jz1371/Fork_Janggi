@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" ng-app="myApp">
 <head>
   <meta charset="utf-8">
@@ -11,8 +11,9 @@
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-touch.min.js"></script>
   <script src="http://sh2514.github.io/Janggi/angular-dragdrop.1.0.8.min.js"></script>
   <script src="http://yoav-zibin.github.io/emulator/ngDraggable.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-animate.min.js"></script>
   <script>
-      angular.module('myApp', ['ngDraggable']);
+      angular.module('myApp', ['ngDraggable', 'ngAnimate']);
   </script>
   <script src="gameLogic.js"></script>
   <script src="game.js"></script>
@@ -50,7 +51,8 @@
                     bbottomright: ($parent.$index === 9 && $index === 5)
             }"
             ng-click="cellClicked($parent.$index, $index)">
-            <img ng-drag="true" ng-drag-success="onStartCallback2($parent.$index, $index)"
+            <img ng-style="getStyle($parent.$index, $index, !$scope.animateFlag)"
+                 ng-drag="true" ng-drag-success="onStartCallback2($parent.$index, $index)"
                  id="real" ng-class="{piece:true}" ng-src="{{(board[$parent.$index][$index] == '' ? 'images/empty.png' : 'images/' + board[$parent.$index][$index][0] + board[$parent.$index][$index][1] + '.png')}}">
 
         </td>
