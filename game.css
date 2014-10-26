@@ -164,7 +164,7 @@ body {
     50%{
         max-width: 140%;
         top: -50%;
-        left: -50%;
+        left: 0%;
     }
     100%{
         max-width: 85%;
@@ -175,18 +175,18 @@ body {
 
 @keyframes testing {
     0% {
-        top:0;
+        top: -100%;
         left:0;
     }
     50%{
         max-width: 140%;
         top: -50%;
-        left: -50%;
+        left: 0;
     }
     100%{
         max-width: 85%;
-        top: -100%;
-        left: -100%;
+        top: 0;
+        left: 0;
     }
 }
 
