@@ -106,7 +106,7 @@ body {
 
 .testing
 {
-    -webkit-animation: testing .5s linear forwards;
+    -webkit-animation: testing 0.5s linear forwards;
     animation: testing 0.5s linear forwards;
 }
 
@@ -154,15 +154,20 @@ body {
 
 
 
+/*====================================================
+  Keyframes
+====================================================*/
 
-
+/*===========================
+    Single square Moves
+===========================*/
 @-webkit-keyframes testing {
     0% {
-        top: -100%;
-        left: 7%;
+        top:-100%;
+        left:7%;
     }
     50%{
-        max-width: 140%;
+        width: 140%;
         top: -50%;
         left: 7%;
     }
@@ -175,11 +180,11 @@ body {
 
 @keyframes testing {
     0% {
-        top: -100%;
+        top:-100%;
         left:7%;
     }
     50%{
-        max-width: 140%;
+        width: 140%;
         top: -50%;
         left: 7%;
     }
@@ -194,35 +199,37 @@ body {
 
 @-webkit-keyframes move_up {
   0% {
-    top: 0;
-    left: 0;
+    top: 100%;
+    left: 7%;
   }
   50% {
-    max-width: 140%;
-    top: -50%;
-    left: 0%
+    top: 50%;
+    left: 7%;
+    max-width: 96%;
+    max-height: 96%;
   }
   100% {
     max-width: 85%;
-    top: -100%;
-    left: 0%
+    top: 0;
+    left: 7%
   }
 }
 
 @keyframes move_up {
   0% {
-    top: 0;
-    left: 0;
+    top: 100%;
+    left: 7%;
   }
   50% {
-    max-width: 140%;
-    top: -50%;
-    left: 0%
+    top: 50%;
+    left: 7%;
+    max-width: 96%;
+    max-height: 96%;
   }
   100% {
     max-width: 85%;
-    top: -100%;
-    left: 0%
+    top: 0;
+    left: 7%
   }
 }
 
@@ -230,35 +237,37 @@ body {
 
 @-webkit-keyframes move_down {
   0% {
-    top: 0;
-    left: 0;
+    top: -100%;
+    left: 7%;
   }
   50% {
-    max-width: 140%;
-    top: 50%;
-    left: 0%
+    top: -50%;
+    left: 7%;
+    max-width: 96%;
+    max-height: 96%;
   }
   100% {
     max-width: 85%;
-    top: 100%;
-    left: 0%
+    top: 0;
+    left: 7%
   }
 }
 
 @keyframes move_down {
   0% {
-    top: 0;
-    left: 0;
+    top: -100%;
+    left: 7%;
   }
   50% {
-    max-width: 140%;
-    top: 50%;
-    left: 0%
+    top: -50%;
+    left: 7%;
+    max-width: 96%;
+    max-height: 96%;
   }
   100% {
     max-width: 85%;
-    top: 100%;
-    left: 0%
+    top: 0;
+    left: 7%
   }
 }
 
@@ -267,34 +276,36 @@ body {
 @-webkit-keyframes move_left {
   0% {
     top: 0;
-    left: 0;
+    left: 100%;
   }
   50% {
-    max-width: 140%;
-    top: 0%;
-    left: -50%
+    max-width: 96%;
+    max-height: 96%;
+    top: 0;
+    left: 50%;
   }
   100% {
     max-width: 85%;
-    top: 0%;
-    left: -100%
+    top: 0;
+    left: 0;
   }
 }
 
 @keyframes move_left {
   0% {
     top: 0;
-    left: 0;
+    left: 100%;
   }
   50% {
-    max-width: 140%;
-    top: 0%;
-    left: -50%
+    max-width: 96%;
+    max-height: 96%;
+    top: 0;
+    left: 50%;
   }
   100% {
     max-width: 85%;
-    top: 0%;
-    left: -100%
+    top: 0;
+    left: 0;
   }
 }
 
@@ -303,34 +314,36 @@ body {
 @-webkit-keyframes move_right {
   0% {
     top: 0;
-    left: 0;
+    left: -100%;
   }
   50% {
-    max-width: 140%;
-    top: 0%;
-    left: 50%
+    max-width: 96%;
+    max-height: 96%;
+    top: 0;
+    left: -50%;
   }
   100% {
     max-width: 85%;
-    top: 0%;
-    left: 100%
+    top: 0;
+    left: 0;
   }
 }
 
 @keyframes move_right {
   0% {
     top: 0;
-    left: 0;
+    left: -100%;
   }
   50% {
-    max-width: 140%;
-    top: 0%;
-    left: 50%
+    max-width: 96%;
+    max-height: 96%;
+    top: 0;
+    left: -50%;
   }
   100% {
     max-width: 85%;
-    top: 0%;
-    left: 100%
+    top: 0;
+    left: 0;
   }
 }
 
@@ -338,35 +351,37 @@ body {
 
 @-webkit-keyframes move_up_left {
   0% {
-    top: 0;
-    left: 0;
+    top: 100%;
+    left: 100%;
   }
   50% {
-    max-width: 140%;
-    top: -50%;
-    left: -50%
+    max-width: 96%;
+    max-height: 96%;
+    top: 50%;
+    left: 50%;
   }
   100% {
     max-width: 85%;
-    top: -100%;
-    left: -100%
+    top: 0;
+    left: 7%;
   }
 }
 
 @keyframes move_up_left {
   0% {
-    top: 0;
-    left: 0;
+    top: 100%;
+    left: 100%;
   }
   50% {
-    max-width: 140%;
-    top: -50%;
-    left: -50%
+    max-width: 96%;
+    max-height: 96%;
+    top: 50%;
+    left: 50%;
   }
   100% {
     max-width: 85%;
-    top: -100%;
-    left: -100%
+    top: 0;
+    left: 7%;
   }
 }
 
@@ -374,35 +389,37 @@ body {
 
 @-webkit-keyframes move_up_right {
   0% {
-    top: 0;
-    left: 0;
+    top: 100%;
+    left: -100%;
   }
   50% {
-    max-width: 140%;
-    top: -50%;
-    left: 50%
+    max-width: 96%;
+    max-height: 96%;
+    top: 50%;
+    left: -50%;
   }
   100% {
     max-width: 85%;
-    top: -100%;
-    left: 100%
+    top: 0;
+    left: 7%;
   }
 }
 
 @keyframes move_up_right {
   0% {
-    top: 0;
-    left: 0;
+    top: 100%;
+    left: -100%;
   }
   50% {
-    max-width: 140%;
-    top: -50%;
-    left: 50%
+    max-width: 96%;
+    max-height: 96%;
+    top: 50%;
+    left: -50%;
   }
   100% {
     max-width: 85%;
-    top: -100%;
-    left: 100%
+    top: 0;
+    left: 7%;
   }
 }
 
@@ -410,35 +427,37 @@ body {
 
 @-webkit-keyframes move_down_left {
   0% {
-    top: 0;
-    left: 0;
+    top: -100%;
+    left: 100%;
   }
   50% {
-    max-width: 140%;
-    top: 50%;
-    left: -50%
+    max-width: 96%;
+    max-height: 96%;
+    top: -50%;
+    left: 50%;
   }
   100% {
     max-width: 85%;
-    top: 100%;
-    left: -100%
+    top: 0;
+    left: 7%;
   }
 }
 
 @keyframes move_down_left {
   0% {
-    top: 0;
-    left: 0;
+    top: -100%;
+    left: 100%;
   }
   50% {
-    max-width: 140%;
-    top: 50%;
-    left: -50%
+    max-width: 96%;
+    max-height: 96%;
+    top: -50%;
+    left: 50%;
   }
   100% {
     max-width: 85%;
-    top: 100%;
-    left: -100%
+    top: 0;
+    left: 7%;
   }
 }
 
@@ -446,34 +465,1931 @@ body {
 
 @-webkit-keyframes move_down_right {
   0% {
-    top: 0;
-    left: 0;
+    top: -100%;
+    left: -100%;
   }
   50% {
-    max-width: 140%;
-    top: 50%;
-    left: 50%
+    max-width: 96%;
+    max-height: 96%;
+    top: -50%;
+    left: -50%;
   }
   100% {
     max-width: 85%;
-    top: 100%;
-    left: 100%
+    top: 0;
+    left: 7%;
   }
 }
 
 @keyframes move_down_right {
   0% {
-    top: 0;
-    left: 0;
+    top: -100%;
+    left: -100%;
   }
   50% {
-    max-width: 140%;
-    top: 50%;
-    left: 50%
+    max-width: 96%;
+    max-height: 96%;
+    top: -50%;
+    left: -50%;
   }
   100% {
     max-width: 85%;
+    top: 0;
+    left: 7%;
+  }
+}
+
+
+/*===========================
+    Multiple Square Moves
+===========================*/
+@-webkit-keyframes move_up2 {
+  0% {
+    top: 200%;
+    left: 7%;
+  }
+  50% {
     top: 100%;
-    left: 100%
+    left: 7%;
+    max-width: 96%;
+    max-height: 96%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 7%
+  }
+}
+
+@keyframes move_up2 {
+  0% {
+    top: 200%;
+    left: 7%;
+  }
+  50% {
+    top: 100%;
+    left: 7%;
+    max-width: 96%;
+    max-height: 96%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 7%
+  }
+}
+
+
+
+@-webkit-keyframes move_down2 {
+  0% {
+    top: -200%;
+    left: 7%;
+  }
+  50% {
+    top: -100%;
+    left: 7%;
+    max-width: 96%;
+    max-height: 96%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 7%
+  }
+}
+
+@keyframes move_down2 {
+  0% {
+    top: -200%;
+    left: 7%;
+  }
+  50% {
+    top: -100%;
+    left: 7%;
+    max-width: 96%;
+    max-height: 96%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 7%
+  }
+}
+
+
+
+@-webkit-keyframes move_left2 {
+  0% {
+    top: 0;
+    left: 200%;
+  }
+  50% {
+    max-width: 96%;
+    max-height: 96%;
+    top: 0;
+    left: 100%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 0;
+  }
+}
+
+@keyframes move_left2 {
+  0% {
+    top: 0;
+    left: 200%;
+  }
+  50% {
+    max-width: 96%;
+    max-height: 96%;
+    top: 0;
+    left: 100%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 0;
+  }
+}
+
+
+
+@-webkit-keyframes move_right2 {
+  0% {
+    top: 0;
+    left: -200%;
+  }
+  50% {
+    max-width: 96%;
+    max-height: 96%;
+    top: 0;
+    left: -100%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 0;
+  }
+}
+
+@keyframes move_right2 {
+  0% {
+    top: 0;
+    left: -200%;
+  }
+  50% {
+    max-width: 96%;
+    max-height: 96%;
+    top: 0;
+    left: -100%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 0;
+  }
+}
+
+
+
+@-webkit-keyframes move_up_left2 {
+  0% {
+    top: 200%;
+    left: 200%;
+  }
+  50% {
+    max-width: 96%;
+    max-height: 96%;
+    top: 100%;
+    left: 100%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 7%;
+  }
+}
+
+@keyframes move_up_left2 {
+  0% {
+    top: 200%;
+    left: 200%;
+  }
+  50% {
+    max-width: 96%;
+    max-height: 96%;
+    top: 100%;
+    left: 100%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 7%;
+  }
+}
+
+
+
+@-webkit-keyframes move_up_right2 {
+  0% {
+    top: 200%;
+    left: -200%;
+  }
+  50% {
+    max-width: 96%;
+    max-height: 96%;
+    top: 100%;
+    left: -100%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 7%;
+  }
+}
+
+@keyframes move_up_right2 {
+  0% {
+    top: 200%;
+    left: -200%;
+  }
+  50% {
+    max-width: 96%;
+    max-height: 96%;
+    top: 100%;
+    left: -100%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 7%;
+  }
+}
+
+
+
+@-webkit-keyframes move_down_left2 {
+  0% {
+    top: -200%;
+    left: 200%;
+  }
+  50% {
+    max-width: 96%;
+    max-height: 96%;
+    top: -100%;
+    left: 100%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 7%;
+  }
+}
+
+@keyframes move_down_left2 {
+  0% {
+    top: -200%;
+    left: 200%;
+  }
+  50% {
+    max-width: 96%;
+    max-height: 96%;
+    top: -100%;
+    left: 100%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 7%;
+  }
+}
+
+
+
+@-webkit-keyframes move_down_right2 {
+  0% {
+    top: -200%;
+    left: -200%;
+  }
+  50% {
+    max-width: 96%;
+    max-height: 96%;
+    top: -100%;
+    left: -100%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 7%;
+  }
+}
+
+@keyframes move_down_right2 {
+  0% {
+    top: -200%;
+    left: -200%;
+  }
+  50% {
+    max-width: 96%;
+    max-height: 96%;
+    top: -100%;
+    left: -100%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 7%;
+  }
+}
+
+@-webkit-keyframes move_up3 {
+  0% {
+    top: 300%;
+    left: 7%;
+  }
+  50% {
+    top: 150%;
+    left: 7%;
+    max-width: 96%;
+    max-height: 96%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 7%
+  }
+}
+
+@keyframes move_up3 {
+  0% {
+    top: 300%;
+    left: 7%;
+  }
+  50% {
+    top: 150%;
+    left: 7%;
+    max-width: 96%;
+    max-height: 96%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 7%
+  }
+}
+
+
+
+@-webkit-keyframes move_down3 {
+  0% {
+    top: -300%;
+    left: 7%;
+  }
+  50% {
+    top: -150%;
+    left: 7%;
+    max-width: 96%;
+    max-height: 96%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 7%
+  }
+}
+
+@keyframes move_down3 {
+  0% {
+    top: -300%;
+    left: 7%;
+  }
+  50% {
+    top: -150%;
+    left: 7%;
+    max-width: 96%;
+    max-height: 96%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 7%
+  }
+}
+
+
+
+@-webkit-keyframes move_left3 {
+  0% {
+    top: 0;
+    left: 300%;
+  }
+  50% {
+    max-width: 96%;
+    max-height: 96%;
+    top: 0;
+    left: 150%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 0;
+  }
+}
+
+@keyframes move_left3 {
+  0% {
+    top: 0;
+    left: 300%;
+  }
+  50% {
+    max-width: 96%;
+    max-height: 96%;
+    top: 0;
+    left: 150%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 0;
+  }
+}
+
+
+
+@-webkit-keyframes move_right3 {
+  0% {
+    top: 0;
+    left: -300%;
+  }
+  50% {
+    max-width: 96%;
+    max-height: 96%;
+    top: 0;
+    left: -150%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 0;
+  }
+}
+
+@keyframes move_right3 {
+  0% {
+    top: 0;
+    left: -300%;
+  }
+  50% {
+    max-width: 96%;
+    max-height: 96%;
+    top: 0;
+    left: -150%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 0;
+  }
+}
+
+
+@-webkit-keyframes move_up4 {
+  0% {
+    top: 400%;
+    left: 7%;
+  }
+  50% {
+    top: 200%;
+    left: 7%;
+    max-width: 96%;
+    max-height: 96%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 7%
+  }
+}
+
+@keyframes move_up4 {
+  0% {
+    top: 400%;
+    left: 7%;
+  }
+  50% {
+    top: 200%;
+    left: 7%;
+    max-width: 96%;
+    max-height: 96%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 7%
+  }
+}
+
+
+
+@-webkit-keyframes move_down4 {
+  0% {
+    top: -400%;
+    left: 7%;
+  }
+  50% {
+    top: -200%;
+    left: 7%;
+    max-width: 96%;
+    max-height: 96%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 7%
+  }
+}
+
+@keyframes move_down4 {
+  0% {
+    top: -400%;
+    left: 7%;
+  }
+  50% {
+    top: -200%;
+    left: 7%;
+    max-width: 96%;
+    max-height: 96%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 7%
+  }
+}
+
+
+
+
+@-webkit-keyframes move_left4 {
+  0% {
+    top: 0;
+    left: 400%;
+  }
+  50% {
+    max-width: 96%;
+    max-height: 96%;
+    top: 0;
+    left: 200%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 0;
+  }
+}
+
+@keyframes move_left4 {
+  0% {
+    top: 0;
+    left: 400%;
+  }
+  50% {
+    max-width: 96%;
+    max-height: 96%;
+    top: 0;
+    left: 200%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 0;
+  }
+}
+
+
+
+@-webkit-keyframes move_right4 {
+  0% {
+    top: 0;
+    left: -400%;
+  }
+  50% {
+    max-width: 96%;
+    max-height: 96%;
+    top: 0;
+    left: -200%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 0;
+  }
+}
+
+@keyframes move_right4 {
+  0% {
+    top: 0;
+    left: -400%;
+  }
+  50% {
+    max-width: 96%;
+    max-height: 96%;
+    top: 0;
+    left: -200%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 0;
+  }
+}
+
+@-webkit-keyframes move_up5 {
+  0% {
+    top: 500%;
+    left: 7%;
+  }
+  50% {
+    top: 250%;
+    left: 7%;
+    max-width: 96%;
+    max-height: 96%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 7%
+  }
+}
+
+@keyframes move_up5 {
+  0% {
+    top: 500%;
+    left: 7%;
+  }
+  50% {
+    top: 250%;
+    left: 7%;
+    max-width: 96%;
+    max-height: 96%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 7%
+  }
+}
+
+
+
+@-webkit-keyframes move_down5 {
+  0% {
+    top: -500%;
+    left: 7%;
+  }
+  50% {
+    top: -250%;
+    left: 7%;
+    max-width: 96%;
+    max-height: 96%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 7%
+  }
+}
+
+@keyframes move_down4 {
+  0% {
+    top: -500%;
+    left: 7%;
+  }
+  50% {
+    top: -250%;
+    left: 7%;
+    max-width: 96%;
+    max-height: 96%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 7%
+  }
+}
+
+
+
+
+@-webkit-keyframes move_left5 {
+  0% {
+    top: 0;
+    left: 500%;
+  }
+  50% {
+    max-width: 96%;
+    max-height: 96%;
+    top: 0;
+    left: 250%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 0;
+  }
+}
+
+@keyframes move_left5 {
+  0% {
+    top: 0;
+    left: 500%;
+  }
+  50% {
+    max-width: 96%;
+    max-height: 96%;
+    top: 0;
+    left: 250%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 0;
+  }
+}
+
+
+
+@-webkit-keyframes move_right5 {
+  0% {
+    top: 0;
+    left: -500%;
+  }
+  50% {
+    max-width: 96%;
+    max-height: 96%;
+    top: 0;
+    left: -250%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 0;
+  }
+}
+
+@keyframes move_right5 {
+  0% {
+    top: 0;
+    left: -500%;
+  }
+  50% {
+    max-width: 96%;
+    max-height: 96%;
+    top: 0;
+    left: -250%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 0;
+  }
+}
+
+@-webkit-keyframes move_up6 {
+  0% {
+    top: 600%;
+    left: 7%;
+  }
+  50% {
+    top: 300%;
+    left: 7%;
+    max-width: 96%;
+    max-height: 96%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 7%
+  }
+}
+
+@keyframes move_up6 {
+  0% {
+    top: 600%;
+    left: 7%;
+  }
+  50% {
+    top: 300%;
+    left: 7%;
+    max-width: 96%;
+    max-height: 96%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 7%
+  }
+}
+
+
+
+@-webkit-keyframes move_down6 {
+  0% {
+    top: -600%;
+    left: 7%;
+  }
+  50% {
+    top: -300%;
+    left: 7%;
+    max-width: 96%;
+    max-height: 96%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 7%
+  }
+}
+
+@keyframes move_down6 {
+  0% {
+    top: -600%;
+    left: 7%;
+  }
+  50% {
+    top: -300%;
+    left: 7%;
+    max-width: 96%;
+    max-height: 96%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 7%
+  }
+}
+
+
+
+
+@-webkit-keyframes move_left6 {
+  0% {
+    top: 0;
+    left: 600%;
+  }
+  50% {
+    max-width: 96%;
+    max-height: 96%;
+    top: 0;
+    left: 300%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 0;
+  }
+}
+
+@keyframes move_left6 {
+  0% {
+    top: 0;
+    left: 600%;
+  }
+  50% {
+    max-width: 96%;
+    max-height: 96%;
+    top: 0;
+    left: 300%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 0;
+  }
+}
+
+
+
+@-webkit-keyframes move_right6 {
+  0% {
+    top: 0;
+    left: -600%;
+  }
+  50% {
+    max-width: 96%;
+    max-height: 96%;
+    top: 0;
+    left: -300%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 0;
+  }
+}
+
+@keyframes move_right6 {
+  0% {
+    top: 0;
+    left: -600%;
+  }
+  50% {
+    max-width: 96%;
+    max-height: 96%;
+    top: 0;
+    left: -300%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 0;
+  }
+}
+
+
+@-webkit-keyframes move_up7 {
+  0% {
+    top: 700%;
+    left: 7%;
+  }
+  50% {
+    top: 350%;
+    left: 7%;
+    max-width: 96%;
+    max-height: 96%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 7%
+  }
+}
+
+@keyframes move_up7 {
+  0% {
+    top: 700%;
+    left: 7%;
+  }
+  50% {
+    top: 350%;
+    left: 7%;
+    max-width: 96%;
+    max-height: 96%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 7%
+  }
+}
+
+
+
+@-webkit-keyframes move_down7 {
+  0% {
+    top: -700%;
+    left: 7%;
+  }
+  50% {
+    top: -350%;
+    left: 7%;
+    max-width: 96%;
+    max-height: 96%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 7%
+  }
+}
+
+@keyframes move_down7 {
+  0% {
+    top: -700%;
+    left: 7%;
+  }
+  50% {
+    top: -350%;
+    left: 7%;
+    max-width: 96%;
+    max-height: 96%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 7%
+  }
+}
+
+
+@-webkit-keyframes move_left7 {
+  0% {
+    top: 0;
+    left: 700%;
+  }
+  50% {
+    max-width: 96%;
+    max-height: 96%;
+    top: 0;
+    left: 350%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 0;
+  }
+}
+
+@keyframes move_left7 {
+  0% {
+    top: 0;
+    left: 700%;
+  }
+  50% {
+    max-width: 96%;
+    max-height: 96%;
+    top: 0;
+    left: 350%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 0;
+  }
+}
+
+
+
+@-webkit-keyframes move_right7 {
+  0% {
+    top: 0;
+    left: -700%;
+  }
+  50% {
+    max-width: 96%;
+    max-height: 96%;
+    top: 0;
+    left: -350%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 0;
+  }
+}
+
+@keyframes move_right7 {
+  0% {
+    top: 0;
+    left: -700%;
+  }
+  50% {
+    max-width: 96%;
+    max-height: 96%;
+    top: 0;
+    left: -350%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 0;
+  }
+}
+
+
+@-webkit-keyframes move_up8 {
+  0% {
+    top: 800%;
+    left: 7%;
+  }
+  50% {
+    top: 400%;
+    left: 7%;
+    max-width: 96%;
+    max-height: 96%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 7%
+  }
+}
+
+@keyframes move_up8 {
+  0% {
+    top: 800%;
+    left: 7%;
+  }
+  50% {
+    top: 400%;
+    left: 7%;
+    max-width: 96%;
+    max-height: 96%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 7%
+  }
+}
+
+
+
+@-webkit-keyframes move_down8 {
+  0% {
+    top: -800%;
+    left: 7%;
+  }
+  50% {
+    top: -400%;
+    left: 7%;
+    max-width: 96%;
+    max-height: 96%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 7%
+  }
+}
+
+@keyframes move_down8 {
+  0% {
+    top: -800%;
+    left: 7%;
+  }
+  50% {
+    top: -400%;
+    left: 7%;
+    max-width: 96%;
+    max-height: 96%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 7%
+  }
+}
+
+
+@-webkit-keyframes move_left8 {
+  0% {
+    top: 0;
+    left: 800%;
+  }
+  50% {
+    max-width: 96%;
+    max-height: 96%;
+    top: 0;
+    left: 400%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 0;
+  }
+}
+
+@keyframes move_left8 {
+  0% {
+    top: 0;
+    left: 800%;
+  }
+  50% {
+    max-width: 96%;
+    max-height: 96%;
+    top: 0;
+    left: 400%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 0;
+  }
+}
+
+
+
+@-webkit-keyframes move_right8 {
+  0% {
+    top: 0;
+    left: -800%;
+  }
+  50% {
+    max-width: 96%;
+    max-height: 96%;
+    top: 0;
+    left: -400%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 0;
+  }
+}
+
+@keyframes move_right8 {
+  0% {
+    top: 0;
+    left: -800%;
+  }
+  50% {
+    max-width: 96%;
+    max-height: 96%;
+    top: 0;
+    left: -400%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 0;
+  }
+}
+
+@-webkit-keyframes move_up9 {
+  0% {
+    top: 900%;
+    left: 7%;
+  }
+  50% {
+    top: 450%;
+    left: 7%;
+    max-width: 96%;
+    max-height: 96%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 7%
+  }
+}
+
+@keyframes move_up9 {
+  0% {
+    top: 900%;
+    left: 7%;
+  }
+  50% {
+    top: 450%;
+    left: 7%;
+    max-width: 96%;
+    max-height: 96%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 7%
+  }
+}
+
+
+
+@-webkit-keyframes move_down9 {
+  0% {
+    top: -900%;
+    left: 7%;
+  }
+  50% {
+    top: -450%;
+    left: 7%;
+    max-width: 96%;
+    max-height: 96%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 7%
+  }
+}
+
+@keyframes move_down9 {
+  0% {
+    top: -900%;
+    left: 7%;
+  }
+  50% {
+    top: -450%;
+    left: 7%;
+    max-width: 96%;
+    max-height: 96%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 7%
+  }
+}
+
+
+
+
+/*===========================
+    Horse Moves
+===========================*/
+
+@-webkit-keyframes move_horse_up_left {
+  0% {
+    top: 200%;
+    left: 100%;
+  }
+  50% {
+    max-width: 96%;
+    max-height: 96%;
+    top: 100%;
+    left: 50%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 7%;
+  }
+}
+
+@keyframes move_horse_up_left {
+0% {
+    top: 200%;
+    left: 100%;
+  }
+  50% {
+    max-width: 96%;
+    max-height: 96%;
+    top: 100%;
+    left: 50%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 7%;
+  }
+}
+
+
+
+@-webkit-keyframes move_horse_up_right {
+  0% {
+    top: 200%;
+    left: -100%;
+  }
+  50% {
+    max-width: 96%;
+    max-height: 96%;
+    top: 100%;
+    left: -50%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 7%;
+  }
+}
+
+@keyframes move_horse_up_right {
+  0% {
+    top: 200%;
+    left: -100%;
+  }
+  50% {
+    max-width: 96%;
+    max-height: 96%;
+    top: 100%;
+    left: -50%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 7%;
+  }
+}
+
+
+
+@-webkit-keyframes move_horse_down_left {
+  0% {
+    top: -200%;
+    left: 100%;
+  }
+  50% {
+    max-width: 96%;
+    max-height: 96%;
+    top: -100%;
+    left: 50%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 7%;
+  }
+}
+
+@keyframes move_horse_down_left {
+  0% {
+    top: -200%;
+    left: 100%;
+  }
+  50% {
+    max-width: 96%;
+    max-height: 96%;
+    top: -100%;
+    left: 50%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 7%;
+  }
+}
+
+
+
+@-webkit-keyframes move_horse_down_right {
+  0% {
+    top: -200%;
+    left: -100%;
+  }
+  50% {
+    max-width: 96%;
+    max-height: 96%;
+    top: -100%;
+    left: -50%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 7%;
+  }
+}
+
+@keyframes move_horse_down_right {
+  0% {
+    top: -200%;
+    left: -100%;
+  }
+  50% {
+    max-width: 96%;
+    max-height: 96%;
+    top: -100%;
+    left: -50%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 7%;
+  }
+}
+
+@-webkit-keyframes move_horse_left_up {
+  0% {
+    top: 100%;
+    left: 200%;
+  }
+  50% {
+    max-width: 96%;
+    max-height: 96%;
+    top: 50%;
+    left: 100%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 7%;
+  }
+}
+
+@keyframes move_horse_left_up {
+  0% {
+    top: 100%;
+    left: 200%;
+  }
+  50% {
+    max-width: 96%;
+    max-height: 96%;
+    top: 50%;
+    left: 100%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 7%;
+  }
+}
+
+
+
+@-webkit-keyframes move_horse_left_down {
+  0% {
+    top: -100%;
+    left: 200%;
+  }
+  50% {
+    max-width: 96%;
+    max-height: 96%;
+    top: -50%;
+    left: 100%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 7%;
+  }
+}
+
+@keyframes mov_horse_down_left_down {
+  0% {
+    top: -100%;
+    left: 200%;
+  }
+  50% {
+    max-width: 96%;
+    max-height: 96%;
+    top: -50%;
+    left: 100%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 7%;
+  }
+}
+
+
+
+@-webkit-keyframes move_horse_right_up {
+  0% {
+    top: 100%;
+    left: -200%;
+  }
+  50% {
+    max-width: 96%;
+    max-height: 96%;
+    top: 50%;
+    left: -100%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 7%;
+  }
+}
+
+@keyframes move_horse_down_right_up {
+  0% {
+    top: 100%;
+    left: -200%;
+  }
+  50% {
+    max-width: 96%;
+    max-height: 96%;
+    top: 50%;
+    left: -100%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 7%;
+  }
+}
+
+
+@-webkit-keyframes move_horse_right_down {
+  0% {
+    top: -100%;
+    left: -200%;
+  }
+  50% {
+    max-width: 96%;
+    max-height: 96%;
+    top: -50%;
+    left: -100%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 7%;
+  }
+}
+
+@keyframes move_horse_down_right_down {
+  0% {
+    top: -100%;
+    left: -200%;
+  }
+  50% {
+    max-width: 96%;
+    max-height: 96%;
+    top: -50%;
+    left: -100%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 7%;
+  }
+}
+
+
+
+/*===========================
+    Elephant Moves
+===========================*/
+
+@-webkit-keyframes move_elephant_up_left {
+  0% {
+    top: 300%;
+    left: 200%;
+  }
+  50% {
+    max-width: 96%;
+    max-height: 96%;
+    top: 150%;
+    left: 100%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 7%;
+  }
+}
+
+@keyframes move_elephant_up_left {
+  0% {
+    top: 300%;
+    left: 200%;
+  }
+  50% {
+    max-width: 96%;
+    max-height: 96%;
+    top: 150%;
+    left: 100%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 7%;
+  }
+}
+
+
+
+@-webkit-keyframes move_elephant_up_right {
+  0% {
+    top: 300%;
+    left: -200%;
+  }
+  50% {
+    max-width: 96%;
+    max-height: 96%;
+    top: 150%;
+    left: -100%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 7%;
+  }
+}
+
+@keyframes move_elephant_up_right {
+  0% {
+    top: 300%;
+    left: -200%;
+  }
+  50% {
+    max-width: 96%;
+    max-height: 96%;
+    top: 150%;
+    left: -100%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 7%;
+  }
+}
+
+
+
+@-webkit-keyframes move_elephant_down_left {
+  0% {
+    top: -300%;
+    left: 200%;
+  }
+  50% {
+    max-width: 96%;
+    max-height: 96%;
+    top: -150%;
+    left: 100%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 7%;
+  }
+}
+
+@keyframes move_elephant_down_left {
+  0% {
+    top: -300%;
+    left: 200%;
+  }
+  50% {
+    max-width: 96%;
+    max-height: 96%;
+    top: -150%;
+    left: 100%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 7%;
+  }
+}
+
+
+
+@-webkit-keyframes move_elephant_down_right {
+  0% {
+    top: -300%;
+    left: -200%;
+  }
+  50% {
+    max-width: 96%;
+    max-height: 96%;
+    top: -150%;
+    left: -100%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 7%;
+  }
+}
+
+@keyframes move_elephant_down_right {
+  0% {
+    top: -300%;
+    left: -200%;
+  }
+  50% {
+    max-width: 96%;
+    max-height: 96%;
+    top: -150%;
+    left: -100%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 7%;
+  }
+}
+
+@-webkit-keyframes move_elephant_left_up {
+  0% {
+    top: 200%;
+    left: 300%;
+  }
+  50% {
+    max-width: 96%;
+    max-height: 96%;
+    top: 100%;
+    left: 150%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 7%;
+  }
+}
+
+@keyframes move_elephant_left_up {
+  0% {
+    top: 200%;
+    left: 300%;
+  }
+  50% {
+    max-width: 96%;
+    max-height: 96%;
+    top: 100%;
+    left: 150%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 7%;
+  }
+}
+
+
+
+@-webkit-keyframes move_elephant_left_down {
+  0% {
+    top: -200%;
+    left: 300%;
+  }
+  50% {
+    max-width: 96%;
+    max-height: 96%;
+    top: -100%;
+    left: 150%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 7%;
+  }
+}
+
+@keyframes mov_elephant_down_left_down {
+  0% {
+    top: -200%;
+    left: 300%;
+  }
+  50% {
+    max-width: 96%;
+    max-height: 96%;
+    top: -100%;
+    left: 150%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 7%;
+  }
+}
+
+
+
+@-webkit-keyframes move_elephant_right_up {
+  0% {
+    top: 200%;
+    left: -300%;
+  }
+  50% {
+    max-width: 96%;
+    max-height: 96%;
+    top: 100%;
+    left: -150%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 7%;
+  }
+}
+
+@keyframes move_elephant_down_right_up {
+  0% {
+    top: 200%;
+    left: -300%;
+  }
+  50% {
+    max-width: 96%;
+    max-height: 96%;
+    top: 100%;
+    left: -150%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 7%;
+  }
+}
+
+
+@-webkit-keyframes move_elephant_right_down {
+  0% {
+    top: -200%;
+    left: -300%;
+  }
+  50% {
+    max-width: 96%;
+    max-height: 96%;
+    top: -100%;
+    left: -150%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 7%;
+  }
+}
+
+@keyframes move_elephant_down_right_down {
+  0% {
+    top: -200%;
+    left: -300%;
+  }
+  50% {
+    max-width: 96%;
+    max-height: 96%;
+    top: -100%;
+    left: -150%;
+  }
+  100% {
+    max-width: 85%;
+    top: 0;
+    left: 7%;
   }
 }
