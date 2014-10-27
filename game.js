@@ -9,17 +9,368 @@ angular.module('myApp')
       var moveAudio = new Audio('audio/move.wav');
       moveAudio.load();
     
-      $scope.animatePieceLocation;
+        // USED FOR ANIMATIONS
+      $scope.animatePiece;
+      $scope.animatePieceFromLocation;
+      $scope.animatePieceToLocation;
       $scope.secondClicked = false;
       $scope.getStyle = function (row, col, flag)
       {
-          $log.info(row + " " + col + " " + flag);
-          if ($scope.secondClicked && (row === $scope.animatePieceLocation.row && col === $scope.animatePieceLocation.col))
+          if ($scope.secondClicked)
           {
-              return {
-                  "-webkit-animation": "testing .5s linear",
-                  "animation": "testing .5s linear"
-              };
+              // Move Horse
+              if ($scope.animatePiece[1] === "H")
+              {
+                  // up left
+                  if (($scope.animatePieceFromLocation.row - 2 === $scope.animatePieceToLocation.row && $scope.animatePieceFromLocation.col - 1 === $scope.animatePieceToLocation.col) &&
+                  (row === $scope.animatePieceToLocation.row && col === $scope.animatePieceToLocation.col)) {
+                      return {
+                          "z-index": "3",
+                          "-webkit-animation": "move_horse_up_left .5s linear",
+                          "animation": "move_horse_up_left .5s linear"
+                      };
+                  }
+                  // up right 
+                  else if (($scope.animatePieceFromLocation.row - 2 === $scope.animatePieceToLocation.row && $scope.animatePieceFromLocation.col + 1 === $scope.animatePieceToLocation.col) &&
+                  (row === $scope.animatePieceToLocation.row && col === $scope.animatePieceToLocation.col)) {
+                      return {
+                          "z-index": "3",
+                          "-webkit-animation": "move_horse_up_right .5s linear",
+                          "animation": "move_horse_up_right .5s linear"
+                      };
+                  }
+                  // down left
+                  else if (($scope.animatePieceFromLocation.row + 2 === $scope.animatePieceToLocation.row && $scope.animatePieceFromLocation.col - 1 === $scope.animatePieceToLocation.col) &&
+                  (row === $scope.animatePieceToLocation.row && col === $scope.animatePieceToLocation.col)) {
+                      return {
+                          "z-index": "3",
+                          "-webkit-animation": "move_horse_down_left .5s linear",
+                          "animation": "move_horse_down_left .5s linear"
+                      };
+                  }
+                  // down right
+                  else if (($scope.animatePieceFromLocation.row + 2 === $scope.animatePieceToLocation.row && $scope.animatePieceFromLocation.col + 1 === $scope.animatePieceToLocation.col) &&
+                  (row === $scope.animatePieceToLocation.row && col === $scope.animatePieceToLocation.col)) {
+                      return {
+                          "z-index": "3",
+                          "-webkit-animation": "move_horse_down_right .5s linear",
+                          "animation": "move_horse_down_right .5s linear"
+                      };
+                  }
+                  // left up (different from up left)
+                  else if (($scope.animatePieceFromLocation.row - 1 === $scope.animatePieceToLocation.row && $scope.animatePieceFromLocation.col - 2 === $scope.animatePieceToLocation.col) &&
+                  (row === $scope.animatePieceToLocation.row && col === $scope.animatePieceToLocation.col)) {
+                      return {
+                          "z-index": "3",
+                          "-webkit-animation": "move_horse_left_up .5s linear",
+                          "animation": "move_horse_left_up .5s linear"
+                      };
+                  }
+                      // left down (different from down left)
+                  else if (($scope.animatePieceFromLocation.row + 1 === $scope.animatePieceToLocation.row && $scope.animatePieceFromLocation.col - 2 === $scope.animatePieceToLocation.col) &&
+                  (row === $scope.animatePieceToLocation.row && col === $scope.animatePieceToLocation.col)) {
+                      return {
+                          "z-index": "3",
+                          "-webkit-animation": "move_horse_left_down .5s linear",
+                          "animation": "move_horse_left_down .5s linear"
+                      };
+                  }
+                      // right up (different from up right)
+                  else if (($scope.animatePieceFromLocation.row - 1 === $scope.animatePieceToLocation.row && $scope.animatePieceFromLocation.col + 2 === $scope.animatePieceToLocation.col) &&
+                  (row === $scope.animatePieceToLocation.row && col === $scope.animatePieceToLocation.col)) {
+                      return {
+                          "z-index": "3",
+                          "-webkit-animation": "move_horse_right_up .5s linear",
+                          "animation": "move_horse_right_up .5s linear"
+                      };
+                  }
+                      // right down (different from down right)
+                  else if (($scope.animatePieceFromLocation.row + 1 === $scope.animatePieceToLocation.row && $scope.animatePieceFromLocation.col + 2 === $scope.animatePieceToLocation.col) &&
+                  (row === $scope.animatePieceToLocation.row && col === $scope.animatePieceToLocation.col)) {
+                      return {
+                          "z-index": "3",
+                          "-webkit-animation": "move_horse_right_down .5s linear",
+                          "animation": "move_horse_right_down .5s linear"
+                      };
+                  }
+              }
+              // Move Elephant
+              else if ($scope.animatePiece[1] === "E") {
+                  // up left
+                  if (($scope.animatePieceFromLocation.row - 3 === $scope.animatePieceToLocation.row && $scope.animatePieceFromLocation.col - 2 === $scope.animatePieceToLocation.col) &&
+                  (row === $scope.animatePieceToLocation.row && col === $scope.animatePieceToLocation.col)) {
+                      return {
+                          "z-index": "3",
+                          "-webkit-animation": "move_elephant_up_left .5s linear",
+                          "animation": "move_elephant_up_left .5s linear"
+                      };
+                  }
+                      // up right 
+                  else if (($scope.animatePieceFromLocation.row - 3 === $scope.animatePieceToLocation.row && $scope.animatePieceFromLocation.col + 2 === $scope.animatePieceToLocation.col) &&
+                  (row === $scope.animatePieceToLocation.row && col === $scope.animatePieceToLocation.col)) {
+                      return {
+                          "z-index": "3",
+                          "-webkit-animation": "move_elephant_up_right .5s linear",
+                          "animation": "move_elephant_up_right .5s linear"
+                      };
+                  }
+                      // down left
+                  else if (($scope.animatePieceFromLocation.row + 3 === $scope.animatePieceToLocation.row && $scope.animatePieceFromLocation.col - 2 === $scope.animatePieceToLocation.col) &&
+                  (row === $scope.animatePieceToLocation.row && col === $scope.animatePieceToLocation.col)) {
+                      return {
+                          "z-index": "3",
+                          "-webkit-animation": "move_elephant_down_left .5s linear",
+                          "animation": "move_elephant_down_left .5s linear"
+                      };
+                  }
+                      // down right
+                  else if (($scope.animatePieceFromLocation.row + 3 === $scope.animatePieceToLocation.row && $scope.animatePieceFromLocation.col + 2 === $scope.animatePieceToLocation.col) &&
+                  (row === $scope.animatePieceToLocation.row && col === $scope.animatePieceToLocation.col)) {
+                      return {
+                          "z-index": "3",
+                          "-webkit-animation": "move_elephant_down_right .5s linear",
+                          "animation": "move_elephant_down_right .5s linear"
+                      };
+                  }
+                      // left up (different from up left)
+                  else if (($scope.animatePieceFromLocation.row - 2 === $scope.animatePieceToLocation.row && $scope.animatePieceFromLocation.col - 3 === $scope.animatePieceToLocation.col) &&
+                  (row === $scope.animatePieceToLocation.row && col === $scope.animatePieceToLocation.col)) {
+                      return {
+                          "z-index": "3",
+                          "-webkit-animation": "move_elephant_left_up .5s linear",
+                          "animation": "move_elephant_left_up .5s linear"
+                      };
+                  }
+                      // left down (different from down left)
+                  else if (($scope.animatePieceFromLocation.row + 2 === $scope.animatePieceToLocation.row && $scope.animatePieceFromLocation.col - 3 === $scope.animatePieceToLocation.col) &&
+                  (row === $scope.animatePieceToLocation.row && col === $scope.animatePieceToLocation.col)) {
+                      return {
+                          "z-index": "3",
+                          "-webkit-animation": "move_elephant_left_down .5s linear",
+                          "animation": "move_elephant_left_down .5s linear"
+                      };
+                  }
+                      // right up (different from up right)
+                  else if (($scope.animatePieceFromLocation.row - 2 === $scope.animatePieceToLocation.row && $scope.animatePieceFromLocation.col + 3 === $scope.animatePieceToLocation.col) &&
+                  (row === $scope.animatePieceToLocation.row && col === $scope.animatePieceToLocation.col)) {
+                      return {
+                          "z-index": "3",
+                          "-webkit-animation": "move_elephant_right_up .5s linear",
+                          "animation": "move_elephant_right_up .5s linear"
+                      };
+                  }
+                      // right down (different from down right)
+                  else if (($scope.animatePieceFromLocation.row + 2 === $scope.animatePieceToLocation.row && $scope.animatePieceFromLocation.col + 3 === $scope.animatePieceToLocation.col) &&
+                  (row === $scope.animatePieceToLocation.row && col === $scope.animatePieceToLocation.col)) {
+                      return {
+                          "z-index": "3",
+                          "-webkit-animation": "move_elephant_right_down .5s linear",
+                          "animation": "move_elephant_right_down .5s linear"
+                      };
+                  }
+              }
+              // "Normal" moves
+              else
+              {
+                  // Determine which animation to return
+                  // Moves up (1 - 8)
+                  for (var i = 1; i < 9; i++)
+                  {
+                      if (($scope.animatePieceFromLocation.row - i === $scope.animatePieceToLocation.row && $scope.animatePieceFromLocation.col === $scope.animatePieceToLocation.col) &&
+                      (row === $scope.animatePieceToLocation.row && col === $scope.animatePieceToLocation.col)) {
+                          if (i === 1)
+                          {
+                              return {
+                                  "z-index": "3",
+                                  "-webkit-animation": "move_up .5s linear",
+                                  "animation": "move_up .5s linear"
+                              };
+                          }
+                          var whichAnimation = "move_up" + i + " .5s linear";
+                          return {
+                              "z-index": "3",
+                              "-webkit-animation": whichAnimation,
+                              "animation": whichAnimation
+                          };   
+                      }
+                  }
+                  
+                  // Moves down (1 - 8)
+                  for (var i = 1; i < 9; i++)
+                  {
+                      if (($scope.animatePieceFromLocation.row + i === $scope.animatePieceToLocation.row && $scope.animatePieceFromLocation.col === $scope.animatePieceToLocation.col) &&
+                      (row === $scope.animatePieceToLocation.row && col === $scope.animatePieceToLocation.col)) {
+                          if (i === 1)
+                          {
+                              return {
+                                  "z-index": "3",
+                                  "-webkit-animation": "move_down .5s linear",
+                                  "animation": "move_down .5s linear"
+                              };
+                          }
+                          var whichAnimation = "move_down" + i + " .5s linear";
+                          return {
+                              "z-index": "3",
+                              "-webkit-animation": whichAnimation,
+                              "animation": whichAnimation
+                          };
+                          
+                      }
+                  }
+                  
+                  // Moves left (1 - 8)
+                  for (var i = 1; i < 9; i++)
+                  {
+                      if (($scope.animatePieceFromLocation.row === $scope.animatePieceToLocation.row && $scope.animatePieceFromLocation.col - i === $scope.animatePieceToLocation.col) &&
+                      (row === $scope.animatePieceToLocation.row && col === $scope.animatePieceToLocation.col)) {
+                          if (i === 1)
+                          {
+                              return {
+                                  "z-index": "3",
+                                  "-webkit-animation": "move_left .5s linear",
+                                  "animation": "move_left .5s linear"
+                              };
+                          }
+                          var whichAnimation = "move_left" + i + " .5s linear";
+                          return {
+                              "z-index": "3",
+                              "-webkit-animation": whichAnimation,
+                              "animation": whichAnimation
+                          };
+                      }
+                  }
+                  
+                  // Moves right (1 - 8)
+                  for (var i = 1; i < 9; i++)
+                  {
+                      if (($scope.animatePieceFromLocation.row === $scope.animatePieceToLocation.row && $scope.animatePieceFromLocation.col + i === $scope.animatePieceToLocation.col) &&
+                      (row === $scope.animatePieceToLocation.row && col === $scope.animatePieceToLocation.col)) {
+                          if (i === 1)
+                          {
+                              return {
+                                  "z-index": "3",
+                                  "-webkit-animation": "move_right .5s linear",
+                                  "animation": "move_right .5s linear"
+                              };
+                          }
+                          var whichAnimation = "move_right" + i + " .5s linear";
+                          return {
+                              "z-index": "3",
+                              "-webkit-animation": whichAnimation,
+                              "animation": whichAnimation
+                          };
+                      }
+                  }
+
+                  // Moves up 9
+                  if (($scope.animatePieceFromLocation.row - 9 === $scope.animatePieceToLocation.row && $scope.animatePieceFromLocation.col === $scope.animatePieceToLocation.col) &&
+                      (row === $scope.animatePieceToLocation.row && col === $scope.animatePieceToLocation.col)) {
+                      return {
+                          "z-index": "3",
+                          "-webkit-animation": "move_up9 .5s linear",
+                          "animation": "move_up9 .5s linear"
+                      };
+                  }
+                  // Moves down 9
+                  else if (($scope.animatePieceFromLocation.row + 9 === $scope.animatePieceToLocation.row && $scope.animatePieceFromLocation.col === $scope.animatePieceToLocation.col) &&
+                      (row === $scope.animatePieceToLocation.row && col === $scope.animatePieceToLocation.col)) {
+                      return {
+                          "z-index": "3",
+                          "-webkit-animation": "move_down9 .5s linear",
+                          "animation": "move_down9 .5s linear"
+                      };
+                  }
+
+                  // up left (can only move 1 or 2 spaces)
+                  for (var i = 1; i < 3; i++)
+                  {
+                      if (($scope.animatePieceFromLocation.row - i === $scope.animatePieceToLocation.row && $scope.animatePieceFromLocation.col - i === $scope.animatePieceToLocation.col) &&
+                      (row === $scope.animatePieceToLocation.row && col === $scope.animatePieceToLocation.col)) {
+                          if (i === 1)
+                          {
+                              return {
+                                  "z-index": "3",
+                                  "-webkit-animation": "move_up_left .5s linear",
+                                  "animation": "move_up_left .5s linear"
+                              };
+                          }
+                          var whichAnimation = "move_up_left" + i + " .5s linear";
+                          return {
+                              "z-index": "3",
+                              "-webkit-animation": whichAnimation,
+                              "animation": whichAnimation
+                          };
+                      }
+                  }
+                  
+                  // up right (can only move 1 or 2 spaces)
+                  for (var i = 1; i < 3; i++)
+                  {
+                      if (($scope.animatePieceFromLocation.row - i === $scope.animatePieceToLocation.row && $scope.animatePieceFromLocation.col + i === $scope.animatePieceToLocation.col) &&
+                      (row === $scope.animatePieceToLocation.row && col === $scope.animatePieceToLocation.col)) {
+                          if (i === 1)
+                          {
+                              return {
+                                  "z-index": "3",
+                                  "-webkit-animation": "move_up_right .5s linear",
+                                  "animation": "move_up_right .5s linear"
+                              };
+                          }
+                          var whichAnimation = "move_up_right" + i + " .5s linear";
+                          return {
+                              "z-index": "3",
+                              "-webkit-animation": whichAnimation,
+                              "animation": whichAnimation
+                          };
+                      }
+                  }
+                  
+                  // down left (can only move 1 or 2 spaces)
+                  for (var i = 1; i < 3; i++)
+                  {
+                      if (($scope.animatePieceFromLocation.row + i === $scope.animatePieceToLocation.row && $scope.animatePieceFromLocation.col - i === $scope.animatePieceToLocation.col) &&
+                      (row === $scope.animatePieceToLocation.row && col === $scope.animatePieceToLocation.col)) {
+                          if (i === 1)
+                          {
+                              return {
+                                  "z-index": "3",
+                                  "-webkit-animation": "move_down_left .5s linear",
+                                  "animation": "move_down_left .5s linear"
+                              };
+                          }
+                          var whichAnimation = "move_down_left" + i + " .5s linear";
+                          return {
+                              "z-index": "3",
+                              "-webkit-animation": whichAnimation,
+                              "animation": whichAnimation
+                          };
+                      }
+                  }
+                  
+                  // down right (can only move 1 or 2 spaces)
+                  for (var i = 1; i < 3; i++)
+                  {
+                      if (($scope.animatePieceFromLocation.row + i === $scope.animatePieceToLocation.row && $scope.animatePieceFromLocation.col + i === $scope.animatePieceToLocation.col) &&
+                      (row === $scope.animatePieceToLocation.row && col === $scope.animatePieceToLocation.col)) {
+                          if (i === 1)
+                          {
+                              return {
+                                  "z-index": "3",
+                                  "-webkit-animation": "move_down_right .5s linear",
+                                  "animation": "move_down_right .5s linear"
+                              };
+                          }
+                          var whichAnimation = "move_down_right" + i + " .5s linear";
+                          return {
+                              "z-index": "3",
+                              "-webkit-animation": whichAnimation,
+                              "animation": whichAnimation
+                          };
+                      }
+                  }
+                  
+              }
+              
           }
           else
           {
@@ -47,7 +398,26 @@ angular.module('myApp')
 
       function sendComputerMove()
       {
-          gameService.makeMove(gameLogic.createComputerMove($scope.board, $scope.turnIndex));
+          $scope.secondClicked = true;
+          var oldBoard = $scope.board;
+          var cpuMove = gameLogic.createComputerMove($scope.board, $scope.turnIndex);
+          $scope.animatePiece = cpuMove[2].set.value.piece;
+          $scope.animatePieceFromLocation = findPiece(oldBoard, $scope.animatePiece);
+          $scope.animatePieceToLocation = { row: cpuMove[2].set.value.row, col: cpuMove[2].set.value.col };
+          $log.info("INSIDE: (" + $scope.animatePieceFromLocation.row + ", " + $scope.animatePieceFromLocation.col + ") to (" + $scope.animatePieceToLocation.row + ", " + $scope.animatePieceToLocation.row);
+          gameService.makeMove(cpuMove);
+      }
+
+      function findPiece(board, piece)
+      {
+          for (var i = 0; i < 10; i++)
+          {
+              for (var j = 0; j < 9; j++)
+              {
+                  if (board[i][j] === piece)
+                      return { row: i, col: j };
+              }
+          }
       }
 
     // Used to determine whether a square on the board is valid to move to.
@@ -247,6 +617,7 @@ angular.module('myApp')
             if ($scope.firstClicked === true && $scope.board[row][col][0] === $scope.turnColor)
             {
                 $scope.pieceToMove = $scope.board[row][col];
+                $scope.animatePieceFromLocation = { row: row, col: col };
                 $log.info(["pieceToMove:", $scope.pieceToMove]);
             }
             // Second click - try to make a move; if invalid, throw exception
@@ -259,7 +630,8 @@ angular.module('myApp')
                 $scope.secondClicked = true;
                 // Show animations and only then send makeMove.
                 animateIt($scope.pieceToMove, move);
-                $scope.animatePieceLocation = { row: row, col: col };
+                $scope.animatePiece = $scope.pieceToMove;
+                $scope.animatePieceToLocation = { row: row, col: col };
                 delete $scope.pieceToMove;
                 delete $scope.pieceToMoveLocation;
                 //sendMakeMove(move);
@@ -269,7 +641,8 @@ angular.module('myApp')
             else if ($scope.turnIndex === $scope.turn)
             {
                 $scope.pieceToMove = $scope.board[row][col];
-                $scope.pieceToMoveLocation = {row: row, col: col};
+                $scope.pieceToMoveLocation = { row: row, col: col };
+                $scope.animatePieceFromLocation = $scope.pieceToMoveLocation;
                 $scope.firstClicked = true;
                 $scope.secondClicked = false;
                 $log.info(["pieceToMove:", $scope.pieceToMove]);
