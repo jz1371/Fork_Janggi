@@ -249,7 +249,7 @@ angular.module('myApp').service('gameLogic', function() {
 
             if ((left.row + 1 < 10) && (board[left.row + 1][left.col - 1][0] !== board[row][col][0]))
             {
-                moves.push({ row: left.row + 1, col: left.col + 1 });
+                moves.push({ row: left.row + 1, col: left.col - 1 });
             }
         }
 

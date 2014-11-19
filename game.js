@@ -12,11 +12,12 @@ angular.module('myApp')
         // USED FOR ANIMATIONS
       $scope.animatePiece;
       $scope.animatePieceFromLocation;
+      $scope.animateFlag = false;
       $scope.animatePieceToLocation;
       $scope.secondClicked = false;
-      $scope.getStyle = function (row, col, flag)
+      $scope.getStyle = function (row, col)
       {
-          if ($scope.secondClicked)
+          if ($scope.secondClicked && $scope.animateFlag === true)
           {
               // Move Horse
               if ($scope.animatePiece[1] === "H")
@@ -526,7 +527,7 @@ angular.module('myApp')
         else if ($scope.turnIndex === 1)
             $scope.turnColor = 'B';
 
-        $scope.cellClicked(row, col);
+        $scope.cellClicked(row, col, true);
     }
 
     function calculateMovable(row, col)
@@ -591,7 +592,7 @@ angular.module('myApp')
     };
     */
 
-    $scope.cellClicked = function (row, col) {
+    $scope.cellClicked = function (row, col, flag) {
         $log.info(["Clicked on cell:", row, col]);
         if (!$scope.isYourTurn) {
             return;
@@ -623,6 +624,16 @@ angular.module('myApp')
             // Second click - try to make a move; if invalid, throw exception
             else if ($scope.firstClicked === true)
             {
+                if (flag === true)
+                {
+                    $scope.animateFlag = false;
+                }
+                    
+                else
+                {
+                    $scope.animateFlag = true;
+                }
+                    
                 var move = gameLogic.createMove($scope.board, $scope.pieceToMove, row, col, $scope.turnIndex);
                 $scope.isYourTurn = false;
                 
@@ -637,7 +648,7 @@ angular.module('myApp')
                 //sendMakeMove(move);
                 
             }
-            // Have not clicked a piece yet
+            // Have not clicked a piece yet - just clicked
             else if ($scope.turnIndex === $scope.turn)
             {
                 $scope.pieceToMove = $scope.board[row][col];
@@ -649,6 +660,8 @@ angular.module('myApp')
             }
             else
             {
+                $scope.firstClicked = false;
+                $scope.secondClicked = false;
                 $log.info(["Not your piece!"]);
             }
             
@@ -659,7 +672,6 @@ angular.module('myApp')
         }
     };
 
-    scaleBodyService.scaleBody({ width: 900, height: 1120 });
 
     gameService.setGame({
         gameDeveloperEmail: "shu0018sh2514@gmail.com",
