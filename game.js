@@ -556,9 +556,14 @@ angular.module('myApp')
         $scope.isYourTurn = params.turnIndexAfterMove >= 0 &&
             params.yourPlayerIndex === params.turnIndexAfterMove;
         $scope.turnIndex = params.turnIndexAfterMove;
-
+        /*
+        if (params.playersInfo[params.yourPlayerIndex].playerId === '') {
+            $scope.AI = true;
+        }
+        */
         // Is it the computer's turn?
-        if (params.turnIndexAfterMove == 1 && $scope.AI)
+        //if (params.turnIndexAfterMove == 1 && $scope.AI)
+        if ($scope.isYourTurn && params.playersInfo[params.yourPlayerIndex].playerId === '')
         {
             // for 500 ms until animation ends
             $timeout(sendComputerMove, 500);
