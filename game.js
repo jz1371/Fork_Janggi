@@ -706,6 +706,8 @@ angular.module('myApp')
       messageService.sendMessage({gameReady : game});
     }
     */
+
+    scaleBodyService.scaleBody({ width: 900, height: 1000 });
     
     function animateIt(thePiece, move)
     {
