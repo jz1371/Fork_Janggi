@@ -707,7 +707,7 @@ angular.module('myApp')
     }
     */
 
-    scaleBodyService.scaleBody({ width: 900, height: 1000 });
+    //scaleBodyService.scaleBody({ width: 900, height: 1000 });
     
     function animateIt(thePiece, move)
     {

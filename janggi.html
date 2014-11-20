@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Janggi</title>
+  <meta name="description" content="Janggi game">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-touch.min.js"></script>
+  <script src="http://yoav-zibin.github.io/emulator/ngDraggable.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-animate.min.js"></script>
+  <script>
+      angular.module('myApp', ['ngDraggable', 'ngAnimate']);
+  </script>
+  <script src="gameLogic.js"></script>
+  <script src="game.js"></script>
+    <script src="http://yoav-zibin.github.io/emulator/gameService.js"></script>
+    <script src="http://yoav-zibin.github.io/emulator/messageService.js"></script>
+    <script src="http://yoav-zibin.github.io/emulator/scaleBodyService.js"></script>
+    <script src="http://yoav-zibin.github.io/emulator/stateService.js"></script>
+  <link rel="stylesheet" type="text/css" href="game.css" />
+  <!--<link rel="stylesheet" type="text/css" href="size1000x1000.css">-->
+</head>
+<body ng-cloak ng-controller="Ctrl">
+  <!--<div><button ng-click="toggleAI()">Toggle AI</button></div>-->
+  <table>
+    <tr ng-repeat="row in board track by $index">
+        <td ng-drop="true" ng-drop-success="onDropCallback2($parent.$index, $index)"
+            ng-repeat="cell in row track by $index"
+            ng-class="{cell: true,
+                    middle: ($parent.$index > 0 && $parent.$index < 9) && ($index > 0 && $index < 8),
+                    top: ($parent.$index === 0),
+                    bottom: ($parent.$index === 9),
+                    left: ($index === 0 && $parent.$index !== 0 && $parent.$index !== 9),
+                    right: ($index === 8 && $parent.$index !== 0 && $parent.$index !== 9),
+                    topleft: ($parent.$index === 0 && $index === 0),
+                    topright: ($parent.$index === 0 && $index === 8),
+                    bottomleft: ($parent.$index === 9 && $index === 0),
+                    bottomright: ($parent.$index === 9 && $index === 8),
+                    center: ($parent.$index === 1 && $index === 4) || ($parent.$index === 8 && $index === 4),
+                    rtopleft: ($parent.$index === 0 && $index === 3),
+                    rtopright: ($parent.$index === 0 && $index === 5),
+                    rbottomleft: ($parent.$index === 2 && $index === 3),
+                    rbottomright: ($parent.$index === 2 && $index === 5),
+                    btopleft: ($parent.$index === 7 && $index === 3),
+                    btopright: ($parent.$index === 7 && $index === 5),
+                    bbottomleft: ($parent.$index === 9 && $index === 3),
+                    bbottomright: ($parent.$index === 9 && $index === 5)
+            }"
+            ng-click="cellClicked($parent.$index, $index)">
+            <img ng-style="getStyle($parent.$index, $index)"
+                 ng-drag="true" ng-drag-success="onStartCallback2($parent.$index, $index)"
+                 id="real" ng-class="{piece:true}" ng-src="{{(board[$parent.$index][$index] == '' ? 'images/empty.png' : 'images/' + board[$parent.$index][$index][0] + board[$parent.$index][$index][1] + '.png')}}">
+
+        </td>
+    </tr>
+  </table>
+</body>
+</html>
