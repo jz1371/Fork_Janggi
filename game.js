@@ -551,6 +551,7 @@ angular.module('myApp')
         }
         else
         {
+            moveAudio.load();
             moveAudio.play();
         }
         $scope.isYourTurn = params.turnIndexAfterMove >= 0 &&
