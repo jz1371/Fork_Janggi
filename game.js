@@ -6,8 +6,8 @@ angular.module('myApp')
       $window, $scope, $log, $animate, $timeout,
       gameService, scaleBodyService, gameLogic) {
 
-      //var moveAudio = new Audio('audio/move.wav');
-      //moveAudio.load();
+      var moveAudio = new Audio('audio/move.wav');
+      moveAudio.load();
     
         // USED FOR ANIMATIONS
       $scope.animatePiece;
@@ -551,8 +551,7 @@ angular.module('myApp')
         }
         else
         {
-            //moveAudio.play();
-            document.getElementById('sound1').play();
+            moveAudio.play();
         }
         $scope.isYourTurn = params.turnIndexAfterMove >= 0 &&
             params.yourPlayerIndex === params.turnIndexAfterMove;
