@@ -25,6 +25,7 @@
 </head>
 <body ng-cloak ng-controller="Ctrl">
   <!--<div><button ng-click="toggleAI()">Toggle AI</button></div>-->
+  <audio id="sound1" src="audio/move.wav" preload="auto"></audio>
   <table>
     <tr ng-repeat="row in board track by $index">
         <td ng-drop="true" ng-drop-success="onDropCallback2($parent.$index, $index)"
