@@ -1,18 +1,13 @@
 table {
   border-collapse: collapse;
 }
-body {
-  margin: 0px;
-  padding: 0px;
-}
+
 .cell {
   vertical-align: middle;
-  width: 100px;
-  height: 100px;
-  margin: 0px;
-  border: none;
-  padding: 0px;
-  z-index: -1;
+  background-size: 100% 100%;
+  width: 100%;
+  height: 100%;
+  /*z-index: -1;*/
 }
 
 .middle {
@@ -93,7 +88,7 @@ body {
   position: relative;
   align-content: center;
   left: 7%;
-  z-index: 1;
+  z-index: 0;
 }
 
 .test {

@@ -1,11 +1,12 @@
-describe("In Janggi ", function()
-{
+describe("In Janggi ", function() {
+
+    'use strict';
+
     var janggiLogic;
 
-    beforeEach(module("myApp.gameLogic"));
+    beforeEach(module("myApp"));
 
-    beforeEach(inject(function (gameLogic)
-    {
+    beforeEach(inject(function (gameLogic) {
         janggiLogic = gameLogic;
     }));
 

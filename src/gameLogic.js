@@ -45,35 +45,15 @@
     
 */
 
-'use strict';
-
 angular.module('myApp').service('gameLogic', function() {
-//var Janggi = (function () {
-    //'use strict';
 
-    // ============================================================================
-    // Utility
-    // ============================================================================
-    /*
-    // Function code for "isEqual", "copyObject"
-    // is from https://github.com/yoav-zibin/TicTacToe/blob/0b8310d95831eabb3cd9184bbe6402413fc8daee/TicTacToeLogic.js
-    function isEqual(object1, object2)
-    {
-        return JSON.stringify(object1) === JSON.stringify(object2);
-    }
+    'use strict';
 
-    function copyObject(object)
-    {
-        return JSON.parse(JSON.stringify(object));
-    }*/
-
-    function isEqual(object1, object2)
-    {
+    function isEqual(object1, object2) {
         return angular.equals(object1, object2);
     }
 
-    function copyObject(object)
-    {
+    function copyObject(object) {
         return angular.copy(object);
     }
 
@@ -82,15 +62,13 @@ angular.module('myApp').service('gameLogic', function() {
     // Piece Rules
     // ============================================================================
 
-    function RGeneralGuardMoves(board, location)
-    {
+    function RGeneralGuardMoves(board, location) {
         var row = location.row;
         var col = location.col;
         var moves = [];
 
         var up = { row: row - 1, col: col };
-        if (up.row >= 0 && (board[up.row][up.col][0] !== 'R'))
-        {
+        if (up.row >= 0 && (board[up.row][up.col][0] !== 'R')) {
             moves.push(up);
         }
 
@@ -116,10 +94,10 @@ angular.module('myApp').service('gameLogic', function() {
         if (((row === 0 && col === 3) ||
             (row === 0 && col === 5) || 
             (row === 2 && col === 3) ||
-            (row === 2 && col === 5))
-            && (board[1][4][0] !== 'R'))
+            (row === 2 && col === 5)) &&
+            (board[1][4][0] !== 'R'))
         {
-            moves.push({row: 1, col: 4})
+            moves.push({row: 1, col: 4});
         }
 
         // Check center
@@ -176,10 +154,10 @@ angular.module('myApp').service('gameLogic', function() {
         if (((row === 9 && col === 3) ||
             (row === 9 && col === 5) ||
             (row === 7 && col === 3) ||
-            (row === 7 && col === 5))
-            && (board[8][4][0] !== 'B'))
+            (row === 7 && col === 5)) &&
+            (board[8][4][0] !== 'B'))
         {
-            moves.push({ row: 8, col: 4 })
+            moves.push({ row: 8, col: 4 });
         }
 
         // Check center
@@ -595,6 +573,7 @@ angular.module('myApp').service('gameLogic', function() {
         var row = location.row;
         var col = location.col;
         var moves = [];
+        var j;
 
         // up
         var i = row - 1;
@@ -604,7 +583,7 @@ angular.module('myApp').service('gameLogic', function() {
         }
         if (i > 0 && (board[i][col][1] !== 'C') )  // A jump is possible; not jumping over a cannon
         {
-            var j = i - 1;
+            j = i - 1;
             while (j >= 0 && (board[j][col] === '' || (board[j][col][0] !== board[row][col][0] && (board[j][col][1] !== 'C') )))
             {
                 moves.push({ row: j, col: col });
@@ -626,7 +605,7 @@ angular.module('myApp').service('gameLogic', function() {
         }
         if (i < 9 && (board[i][col][1] !== 'C') )  // A jump is possible; not jumping over a cannon
         {
-            var j = i + 1;
+            j = i + 1;
             while (j <= 9 && (board[j][col] === '' || (board[j][col][0] !== board[row][col][0] && (board[j][col][1] !== 'C') )))
             {
                 moves.push({ row: j, col: col });
@@ -648,7 +627,7 @@ angular.module('myApp').service('gameLogic', function() {
         }
         if (i > 0 && (board[row][i][1] !== 'C') )  // A jump is possible; not jumping over a cannon
         {
-            var j = i - 1;
+            j = i - 1;
             while (j >= 0 && (board[row][j] === '' || (board[row][j][0] !== board[row][col][0] && (board[row][j][1] !== 'C') )))
             {
                 moves.push({ row: row, col: j });
@@ -670,7 +649,7 @@ angular.module('myApp').service('gameLogic', function() {
         }
         if (i < 8 && (board[row][i][1] !== 'C') )  // A jump is possible; not jumping over a cannon
         {
-            var j = i + 1;
+            j = i + 1;
             while (j <= 8 && (board[row][j] === '' || (board[row][j][0] !== board[row][col][0] && (board[row][j][1] !== 'C') )))
             {
                 moves.push({ row: row, col: j });
@@ -790,6 +769,8 @@ angular.module('myApp').service('gameLogic', function() {
         var row = location.row;
         var col = location.col;
         var moves = [];
+        var left;
+        var right;
 
         // Determine which color soldier
         if (board[row][col][0] === 'R')
@@ -801,13 +782,13 @@ angular.module('myApp').service('gameLogic', function() {
                 moves.push(down);
             }
 
-            var left = { row: row, col: col - 1 };
+            left = { row: row, col: col - 1 };
             if (left.col >= 0 && (board[left.row][left.col][0] !== 'R'))
             {
                 moves.push(left);
             }
 
-            var right = { row: row, col: col + 1 };
+            right = { row: row, col: col + 1 };
             if (right.col < 9 && (board[right.row][right.col][0] !== 'R'))
             {
                 moves.push(right);
@@ -815,10 +796,10 @@ angular.module('myApp').service('gameLogic', function() {
 
             // Check diagonals in palace
             if (((row === 7 && col === 3) ||
-                 (row === 7 && col === 5))
-                 && (board[8][4][0] !== 'R'))
+                 (row === 7 && col === 5)) &&
+                (board[8][4][0] !== 'R'))
             {
-                moves.push({ row: 8, col: 4 })
+                moves.push({ row: 8, col: 4 });
             }
 
             // Check center in palace
@@ -844,13 +825,13 @@ angular.module('myApp').service('gameLogic', function() {
                 moves.push(up);
             }
 
-            var left = { row: row, col: col - 1 };
+            left = { row: row, col: col - 1 };
             if (left.col >= 0 && (board[left.row][left.col][0] !== 'B'))
             {
                 moves.push(left);
             }
 
-            var right = { row: row, col: col + 1 };
+            right = { row: row, col: col + 1 };
             if (right.col < 9 && (board[right.row][right.col][0] !== 'B'))
             {
                 moves.push(right);
@@ -858,10 +839,10 @@ angular.module('myApp').service('gameLogic', function() {
 
             // Check diagonals in palace
             if (((row === 2 && col === 3) ||
-                 (row === 2 && col === 5))
-                 && (board[1][4][0] !== 'B'))
+                 (row === 2 && col === 5)) &&
+                (board[1][4][0] !== 'B'))
             {
-                moves.push({ row: 1, col: 4 })
+                moves.push({ row: 1, col: 4 });
             }
 
             // Check center in palace.
@@ -912,11 +893,11 @@ angular.module('myApp').service('gameLogic', function() {
         }
 
         // Only have to check within palace to find general
-        for (var i = 7; i < 10; i++)
+        for (var ii = 7; ii < 10; ii++)
         {
-            for (var j = 3; j < 6; j++)
+            for (var jj = 3; jj < 6; jj++)
             {
-                if (board[i][j] === 'BG1')
+                if (board[ii][jj] === 'BG1')
                 {
                     BHasGeneral = true;
                 }
@@ -957,7 +938,7 @@ angular.module('myApp').service('gameLogic', function() {
         // If the piece is not found on the board.
         if (location.row === undefined)
         {
-            throw new Error(piece + " is not on the board!")
+            throw new Error(piece + " is not on the board!");
         }
 
         // determine what moves the piece can make
@@ -966,13 +947,13 @@ angular.module('myApp').service('gameLogic', function() {
             case 'RG1':
             case 'RU1':
             case 'RU2':
-                possibleMoves = RGeneralGuardMoves(board, location);
+                possibleMoves = new RGeneralGuardMoves(board, location);
                 return possibleMoves;
             
             case 'BG1':
             case 'BU1':
             case 'BU2':
-                possibleMoves = BGeneralGuardMoves(board, location);
+                possibleMoves = new BGeneralGuardMoves(board, location);
                 return possibleMoves;
 
             case 'RH1':
@@ -1046,14 +1027,13 @@ angular.module('myApp').service('gameLogic', function() {
 
         if (possibleMoves.length !== 0)
         {
-            for (var i = 0; i < possibleMoves.length; i++)
+            for (var ii = 0; ii < possibleMoves.length; ii++)
             {
-                if (possibleMoves[i].row === row && (possibleMoves[i].col === col) )
+                if (possibleMoves[ii].row === row && (possibleMoves[ii].col === col) )
                 {
                     // Move the piece to the claimed location
                     board[location.row][location.col] = '';
                     board[row][col] = piece;
-
                     return board;   // return modified move
                 }
             }
@@ -1097,7 +1077,7 @@ angular.module('myApp').service('gameLogic', function() {
                     )
                 {
                     // If a cannon is found on the field check to see if it can move.
-                    var cannonMoves = determineMoves(board, board[i][j])
+                    var cannonMoves = determineMoves(board, board[i][j]);
                     if (cannonMoves.length !== 0)
                     {
                         // Some cannon can still move
@@ -1114,7 +1094,7 @@ angular.module('myApp').service('gameLogic', function() {
                     }
                 }
 
-                if (aDrawPiece == false && (board[i][j] !== '') )
+                if (aDrawPiece === false && (board[i][j] !== '') )
                 {
                     // Some piece other than generals, guards, and cannons are still on the board.
                     otherPiecesExist = true;
@@ -1163,11 +1143,6 @@ angular.module('myApp').service('gameLogic', function() {
         return false;
     }
 
-    function getPieceAt(row, col)
-    {
-        
-    }
-
     function getInitialBoard()
     {
         return [['RR1', 'RH1', 'RE1', 'RU1', '', 'RU2', 'RE2', 'RH2', 'RR2'],
@@ -1204,7 +1179,7 @@ angular.module('myApp').service('gameLogic', function() {
         {
             // Game over.
             firstOperation = {endMatch: {endMatchScores:
-                        (winner === 'R' ? [1, 0] : (winner === 'B' ? [0, 1] : [0, 0])) }}
+                        (winner === 'R' ? [1, 0] : (winner === 'B' ? [0, 1] : [0, 0])) }};
         }
         else
         {
@@ -1214,8 +1189,7 @@ angular.module('myApp').service('gameLogic', function() {
 
         return [firstOperation,
                 { set: { key: 'board', value: boardAfterMove } },
-                { set: { key: 'delta', value: { piece: piece, row: row, col: col } } } ]
-
+                { set: { key: 'delta', value: { piece: piece, row: row, col: col } } } ];
     }
 
     // Actual function returned that is used to test if a move is legitimate.
@@ -1234,10 +1208,10 @@ angular.module('myApp').service('gameLogic', function() {
             var board = stateBeforeMove.board;
 
             // Verify that players are moving their own pieces
-            if ((turnIndexBeforeMove === 0 && piece[0] === 'B')
-                || (turnIndexBeforeMove === 1 && piece[0] === 'R'))
+            if ((turnIndexBeforeMove === 0 && piece[0] === 'B') ||
+                (turnIndexBeforeMove === 1 && piece[0] === 'R'))
             {
-                throw new Error("Invalid attempt to move opponent's piece!")
+                throw new Error("Invalid attempt to move opponent's piece!");
             }
 
             // Attempt to recreate move to validate legitimacy.
@@ -1254,7 +1228,7 @@ angular.module('myApp').service('gameLogic', function() {
         catch (e)
         {
             //console.log("POINTS B - EXCEPTION!");
-            //console.log(e);
+            console.log(e);
             return false;
         }
 
@@ -1330,10 +1304,13 @@ angular.module('myApp').service('gameLogic', function() {
 
     function createComputerMove(board, turnIndexBeforeMove)
     {
-        if (turnIndexBeforeMove == 0)
-            var color = 'R';
-        else if (turnIndexBeforeMove == 1)
-            var color = 'B';
+        var color;
+        if (turnIndexBeforeMove === 0) {
+            color = 'R';
+        }
+        else if (turnIndexBeforeMove === 1) {
+            color = 'B';
+        }
 
         var possibleMoves = [];
         for (var i = 0; i < 10; i++)

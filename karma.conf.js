@@ -4,11 +4,9 @@ module.exports = function(config){
     basePath : './',
 
     files : [
-      'components/angular/angular.js',
-      'components/angular-route/angular-route.js',
-      'components/angular-resource/angular-resource.js',
-      'components/angular-mocks/angular-mocks.js',
-      '*.js'
+      'http://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.js',
+      'http://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular-mocks.js',
+      'src/*.js'
     ],
 
     reporters: ['progress', 'coverage'],
