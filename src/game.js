@@ -16,20 +16,19 @@ angular.module('myApp',[]).controller('Ctrl', function (
     /* enable platform's resizeGameArea service */
     resizeGameAreaService.setWidthToHeight(0.9);
 
-
-    var draggingLines = document.getElementById("draggingLines");
+    var gameArea               = document.getElementById("gameArea");
+    var draggingLines          = document.getElementById("draggingLines");
     var horizontalDraggingLine = document.getElementById("horizontalDraggingLine");
-    var verticalDraggingLine = document.getElementById("verticalDraggingLine");
-    var gameArea = document.getElementById("gameArea");
+    var verticalDraggingLine   = document.getElementById("verticalDraggingLine");
+
     var draggingPiece = null;
+    var draggingStartedRowCol = null;
     var rowsNum = 10;
     var colsNum = 9;
-    var draggingStartedRowCol = null;
     var nextZIndex = 91;
 
     var CELL_HEIGHT = gameArea.clientHeight / rowsNum;
     var CELL_WIDTH  = gameArea.clientWidth  / colsNum;
-
 
     function printMessage(msg, stringify) {
         if (verbose) {
@@ -42,18 +41,14 @@ angular.module('myApp',[]).controller('Ctrl', function (
     }
 
     function getDraggingPiece(row, col) {
-        var piece =  document.getElementById("e2e_test_img_" + row + "x" + col);
-        return piece;
+        return document.getElementById("e2e_test_img_" + row + "x" + col);
     }
-
 
     function handleDragEvent(type, clientX, clientY) {
         var offsetX = clientX - gameArea.offsetLeft;
         var offsetY = clientY - gameArea.offsetTop;
-        //TODO: Is outside gameArea?
         if (offsetX < 0 || offsetY < 0 || offsetX >= gameArea.clientWidth || offsetY >= gameArea.clientHeight) {
-            //if (draggingPiece) {
-            //}
+            draggingLines.style.display = "none";
         }
         var row = Math.floor(rowsNum * offsetY / gameArea.clientHeight);
         var col = Math.floor(colsNum * offsetX / gameArea.clientWidth);
@@ -62,7 +57,6 @@ angular.module('myApp',[]).controller('Ctrl', function (
         }
         if (type === "touchend") {
             dragEndHandler(row, col);
-            printMessage("end: row" + row + " col: " + col);
         } else {
             if (draggingPiece) {
                 // drag event continue
@@ -72,14 +66,11 @@ angular.module('myApp',[]).controller('Ctrl', function (
         if (type === "touchend" || type === "touchcancel" || type === "touchleave") {
             // clear drag status
             if (draggingStartedRowCol) {
-                //draggingPiece.style = "none";
                 setDraggingPieceTopLeft(getSquareTopLeft(draggingStartedRowCol.row, draggingStartedRowCol.col));
             }
             draggingPiece = null;
             draggingStartedRowCol = null;
             draggingLines.style.display = "none";
-            //draggingPiece.style.left = "0%";
-            //draggingPiece.style.top = "0%";
         }
     }
 
@@ -146,7 +137,6 @@ angular.module('myApp',[]).controller('Ctrl', function (
             y: row * size.height + size.height / 2
         };
     }
-
 
     // USED FOR ANIMATIONS
     $scope.animatePiece = null;
@@ -333,7 +323,6 @@ angular.module('myApp',[]).controller('Ctrl', function (
             return;
         }
     };
-
 
     gameService.setGame({
         //gameDeveloperEmail: "shu0018sh2514@gmail.com",
