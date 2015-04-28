@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Janggi</title>
+    <title>{{'JANGGI_GAME' | translate}}</title>
     <meta name="description" content="Janggi game">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
 
@@ -14,6 +14,10 @@
 
     <script src="http://yoav-zibin.github.io/emulator/dist/gameServices.min.js"></script>
     <script src="http://yoav-zibin.github.io/emulator/dist/dragAndDropListeners.min.js"></script>
+    <script>
+        window.angularTranslationLanguages = ['en', 'zh', 'he'];
+    </script>
+    <script src="http://yoav-zibin.github.io/emulator/angular-translate/angular-translate.min.js"></script>
 
     <link rel="stylesheet" type="text/css" href="http://yoav-zibin.github.io/emulator/main.css">
     <link rel="stylesheet" type="text/css" href="game.css">
@@ -21,6 +25,7 @@
 
 <body ng-cloak ng-controller="Ctrl">
 <div id="gameArea">
+    <div style="display:none;">Welcome to {{ 'JANGGI_GAME' | translate }}</div>
     <svg id="draggingLines" width="100%" height="100%"
          style="display:none; position:absolute; z-index: 30;">
         <line id="horizontalDraggingLine"

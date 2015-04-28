@@ -1,5 +1,5 @@
 angular.module('myApp',[]).controller('Ctrl', function (
-    $window, $scope, $log, $timeout, resizeGameAreaService, gameService, gameLogic) {
+    $window, $scope, $log, $timeout, $translate, resizeGameAreaService, gameService, gameLogic) {
 
     'use strict';
 
