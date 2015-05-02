@@ -1,5 +1,5 @@
 angular.module('myApp',[]).controller('Ctrl', function (
-    $window, $scope, $log, $timeout, $translate, resizeGameAreaService, gameService, gameLogic) {
+    $window, $scope, $log, $timeout, $translate, resizeGameAreaService, gameService, gameLogic, dragAndDropService) {
 
     'use strict';
 
@@ -336,7 +336,7 @@ angular.module('myApp',[]).controller('Ctrl', function (
     });
 
     /* enable platform's drag-n-drop service */
-    window.handleDragEvent = handleDragEvent;
+    dragAndDropService.addDragListener("gameArea", handleDragEvent);
 
     function animateIt(thePiece, move)
     {
