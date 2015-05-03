@@ -101,50 +101,50 @@ table {
 
 .testing
 {
-    -webkit-animation: testing 0.5s linear forwards;
-    animation: testing 0.5s linear forwards;
+  -webkit-animation: testing 0.5s linear forwards;
+  animation: testing 0.5s linear forwards;
 }
 
 
 
 .move_up {
-    -webkit-animation: move_up 0.4s linear fowards;
-    animation: move_up 0.4s linear forwards;
+  -webkit-animation: move_up 0.4s linear fowards;
+  animation: move_up 0.4s linear forwards;
 }
 
 .move_down {
-    -webkit-animation: move_down 0.4s linear fowards;
-    animation: move_down 0.4s linear forwards;
+  -webkit-animation: move_down 0.4s linear fowards;
+  animation: move_down 0.4s linear forwards;
 }
 
 .move_left {
-    -webkit-animation: move_left 0.4s linear fowards;
-    animation: move_left 0.4s linear forwards;
+  -webkit-animation: move_left 0.4s linear fowards;
+  animation: move_left 0.4s linear forwards;
 }
 
 .move_right {
-    -webkit-animation: move_right 0.4s linear fowards;
-    animation: move_right 0.4s linear forwards;
+  -webkit-animation: move_right 0.4s linear fowards;
+  animation: move_right 0.4s linear forwards;
 }
 
 .move_up_left {
-    -webkit-animation: move_up_left 0.4s linear fowards;
-    animation: move_up_left 0.4s linear forwards;
+  -webkit-animation: move_up_left 0.4s linear fowards;
+  animation: move_up_left 0.4s linear forwards;
 }
 
 .move_up_right {
-    -webkit-animation: move_up_right 0.4s linear fowards;
-    animation: move_up_right 0.4s linear forwards;
+  -webkit-animation: move_up_right 0.4s linear fowards;
+  animation: move_up_right 0.4s linear forwards;
 }
 
 .move_down_left {
-    -webkit-animation: move_down_left 0.4s linear fowards;
-    animation: move_down_left 0.4s linear forwards;
+  -webkit-animation: move_down_left 0.4s linear fowards;
+  animation: move_down_left 0.4s linear forwards;
 }
 
 .move_down_right {
-    -webkit-animation: move_down_right 0.4s linear fowards;
-    animation: move_down_right 0.4s linear forwards;
+  -webkit-animation: move_down_right 0.4s linear fowards;
+  animation: move_down_right 0.4s linear forwards;
 }
 
 
@@ -157,37 +157,37 @@ table {
     Single square Moves
 ===========================*/
 @-webkit-keyframes testing {
-    0% {
-        top:-100%;
-        left:7%;
-    }
-    50%{
-        width: 140%;
-        top: -50%;
-        left: 7%;
-    }
-    100%{
-        max-width: 85%;
-        top: 0;
-        left: 7%;
-    }
+  0% {
+    top:-100%;
+    left:7%;
+  }
+  50%{
+    width: 140%;
+    top: -50%;
+    left: 7%;
+  }
+  100%{
+    max-width: 85%;
+    top: 0;
+    left: 7%;
+  }
 }
 
 @keyframes testing {
-    0% {
-        top:-100%;
-        left:7%;
-    }
-    50%{
-        width: 140%;
-        top: -50%;
-        left: 7%;
-    }
-    100%{
-        max-width: 85%;
-        top: 0;
-        left: 7%;
-    }
+  0% {
+    top:-100%;
+    left:7%;
+  }
+  50%{
+    width: 140%;
+    top: -50%;
+    left: 7%;
+  }
+  100%{
+    max-width: 85%;
+    top: 0;
+    left: 7%;
+  }
 }
 
 
@@ -1804,7 +1804,7 @@ table {
 }
 
 @keyframes move_horse_up_left {
-0% {
+  0% {
     top: 200%;
     left: 100%;
   }
@@ -2387,4 +2387,34 @@ table {
     top: 0;
     left: 7%;
   }
+}
+
+.carousel-indicators li {
+  background-color: black;
+}
+.carousel-indicators .active {
+  background-color: green;
+}
+td {
+  padding:0 5px 0 5px;
+}
+.modal-dialog {
+  z-index: 1001;
+}
+.overlayModal {
+  text-align:center;
+  z-index: 1000;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width:100%;
+  height:100%;
+}
+.modal-backdrop {
+  z-index: 1000;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width:100%;
+  height:100%;
 }

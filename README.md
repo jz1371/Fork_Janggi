@@ -9,3 +9,5 @@ Janggi
 * Remove jquery's Drag-n-drop
 * Add    platform's drag-n-drop
 * Add    manifest
+* Add    I18N
+* Add    instructions for game playing

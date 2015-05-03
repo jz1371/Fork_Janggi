@@ -1,4 +1,4 @@
-angular.module('myApp',[]).controller('Ctrl', function (
+angular.module('myApp',['ngTouch', 'ui.bootstrap']).controller('Ctrl', function (
     $window, $scope, $log, $timeout, $translate, resizeGameAreaService, gameService, gameLogic, dragAndDropService) {
 
     'use strict';
