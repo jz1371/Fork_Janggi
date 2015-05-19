@@ -206,6 +206,9 @@ angular.module('myApp',['ngTouch', 'ui.bootstrap']).controller('Ctrl', function 
     $scope.pieceDragged = null;
 
     function dragEndHandler (row, col) {
+        if(row < 0 || row > 9 || col < 0 ||  col > 8 ) {
+            return;
+        }
         if (!$scope.movable[row][col]) {
             return;
         }
