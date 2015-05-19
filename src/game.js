@@ -27,8 +27,8 @@ angular.module('myApp',['ngTouch', 'ui.bootstrap']).controller('Ctrl', function 
     var colsNum = 9;
     var nextZIndex = 91;
 
-    var CELL_HEIGHT = gameArea.clientHeight / rowsNum;
-    var CELL_WIDTH  = gameArea.clientWidth  / colsNum;
+    //var CELL_HEIGHT = gameArea.clientHeight / rowsNum;
+    //var CELL_WIDTH  = gameArea.clientWidth  / colsNum;
 
     function printMessage(msg, stringify) {
         if (verbose) {
@@ -62,7 +62,7 @@ angular.module('myApp',['ngTouch', 'ui.bootstrap']).controller('Ctrl', function 
         } else {
             if (draggingPiece) {
                 // drag event continue
-                dragContinueHandler(row, col, offsetX, offsetY);
+                dragContinueHandler(row, col);
             }
         }
         if (type === "touchend" || type === "touchcancel" || type === "touchleave") {
@@ -70,8 +70,8 @@ angular.module('myApp',['ngTouch', 'ui.bootstrap']).controller('Ctrl', function 
             if (draggingStartedRowCol) {
                 //setDraggingPieceTopLeft(getSquareTopLeft(draggingStartedRowCol.row, draggingStartedRowCol.col));
                 var centerXY = getSquareCenterXY(draggingStartedRowCol.row, draggingStartedRowCol.col);
-                var left = centerXY.x - 0.85 * CELL_WIDTH / 2;
-                var top = centerXY.y - 0.85 * CELL_HEIGHT / 2;
+                var left = centerXY.x - 0.85 * (gameArea.clientWidth  / colsNum ) / 2;
+                var top = centerXY.y - 0.85 * (gameArea.clientHeight / rowsNum) / 2;
                 setDraggingPieceTopLeft({top: top, left: left});
             }
             draggingPiece = null;
@@ -99,10 +99,10 @@ angular.module('myApp',['ngTouch', 'ui.bootstrap']).controller('Ctrl', function 
         drawDraggingLines(row, col);
     }
 
-    function dragContinueHandler(row, col, x, y) {
+    function dragContinueHandler(row, col) {
         var centerXY = getSquareCenterXY(row, col);
-        var left = centerXY.x - 0.85 * CELL_WIDTH / 2;
-        var top = centerXY.y - 0.85 * CELL_HEIGHT / 2;
+        var left = centerXY.x - 0.85 * (gameArea.clientWidth  / colsNum) / 2;
+        var top = centerXY.y - 0.85 * (gameArea.clientHeight / rowsNum)/ 2;
         printMessage("dragging at: " + $scope.pieceDragged + " at " + row + " " + col);
         setDraggingPieceTopLeft({top: top, left: left});
         drawDraggingLines(row, col);
