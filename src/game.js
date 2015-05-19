@@ -47,6 +47,8 @@ angular.module('myApp',['ngTouch', 'ui.bootstrap']).controller('Ctrl', function 
     function handleDragEvent(type, clientX, clientY) {
         var offsetX = clientX - gameArea.offsetLeft;
         var offsetY = clientY - gameArea.offsetTop;
+        //console.log("c: " + clientX + " g " + gameArea.offsetLeft +  " offsetX: " + offsetX);
+        //console.log("c: " + clientY + " g " + gameArea.offsetTop +   " offsetY: " + offsetY);
         if (offsetX < 0 || offsetY < 0 || offsetX >= gameArea.clientWidth || offsetY >= gameArea.clientHeight) {
             draggingLines.style.display = "none";
         }
@@ -66,7 +68,11 @@ angular.module('myApp',['ngTouch', 'ui.bootstrap']).controller('Ctrl', function 
         if (type === "touchend" || type === "touchcancel" || type === "touchleave") {
             // clear drag status
             if (draggingStartedRowCol) {
-                setDraggingPieceTopLeft(getSquareTopLeft(draggingStartedRowCol.row, draggingStartedRowCol.col));
+                //setDraggingPieceTopLeft(getSquareTopLeft(draggingStartedRowCol.row, draggingStartedRowCol.col));
+                var centerXY = getSquareCenterXY(draggingStartedRowCol.row, draggingStartedRowCol.col);
+                var left = centerXY.x - 0.85 * CELL_WIDTH / 2;
+                var top = centerXY.y - 0.85 * CELL_HEIGHT / 2;
+                setDraggingPieceTopLeft({top: top, left: left});
             }
             draggingPiece = null;
             draggingStartedRowCol = null;
@@ -94,9 +100,9 @@ angular.module('myApp',['ngTouch', 'ui.bootstrap']).controller('Ctrl', function 
     }
 
     function dragContinueHandler(row, col, x, y) {
-
-        var left = x - CELL_WIDTH / 2 + 0.1 * CELL_WIDTH;
-        var top = y - CELL_HEIGHT / 2;
+        var centerXY = getSquareCenterXY(row, col);
+        var left = centerXY.x - 0.85 * CELL_WIDTH / 2;
+        var top = centerXY.y - 0.85 * CELL_HEIGHT / 2;
         printMessage("dragging at: " + $scope.pieceDragged + " at " + row + " " + col);
         setDraggingPieceTopLeft({top: top, left: left});
         drawDraggingLines(row, col);

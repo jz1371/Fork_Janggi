@@ -87,7 +87,8 @@ table {
   max-height: 85%;
   position: relative;
   align-content: center;
-  left: 7%;
+  left: 7.5%;
+  top: 7.5%;
   z-index: 0;
 }
 
@@ -2417,4 +2418,12 @@ td {
   top: 0;
   width:100%;
   height:100%;
+}
+
+.carousel-inner > .left {
+  background-image: none;
+}
+
+.carousel-inner > .right{
+  background-image: none;
 }
