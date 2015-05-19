@@ -54,6 +54,13 @@ images/board/topright.png
 images/board/x.png
 images/rule1.png
 images/rule2.png
+images/rules/r_cannon.png
+images/rules/r_chariot.png
+images/rules/r_elephant.png
+images/rules/r_guards.png
+images/rules/r_horse.png
+images/rules/r_soldier.png
+
 
 NETWORK:
 languages/en.js

@@ -3,5 +3,12 @@ window.angularTranslationsLoaded('zh',{
 "RULES_OF_JANGGI":"朝鲜将棋的规则",
 "RULES_SLIDE1":"士兵只能向前或向旁边移动",
 "RULES_SLIDE2":"先丢掉帅的玩家输掉比赛",
+"RULE_OF_GENERAL":"在一轮中，将只能在自己的宫殿中沿着标记的线移动一步。如果将被对方吃掉则输掉比赛。如果双方的将直接面对面，并且将要下棋的一方没有把自己的将移开，则比赛平局",
+"RULE_OF_GUARDS":"侍卫和将的走法一致，用来保护将",
+"RULE_OF_ELEPHANT":"象走对角线，斜向前两个格，最终走到距离出发点一个2x3长方形的对面顶点处",
+"RULE_OF_HORSE":"马沿着对角线向前一格，向外一格",
+"RULE_OF_CHARIOT":"车走直线，横向或竖向",
+"RULE_OF_CANNON":"炮必须隔着一个棋子才能跳",
+"RULE_OF_SOLDIER":"士兵只能向前或向旁边移动",
 "CLOSE":"关闭"
 });
