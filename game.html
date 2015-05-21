@@ -26,7 +26,7 @@
     <span ng-click="isHelpModalShown = true" class="glyphicon glyphicon-info-sign" style="font-size:1.5em;" aria-hidden="true"></span>
 </div>
 
-<div class="overlayModal" ng-show="isHelpModalShown" aria-hidden="true">
+<div class="overlayModal" ng-class="{zeroOpacity: !isHelpModalShown, oneOpacity: isHelpModalShown}" aria-hidden="true">
     <div class="modal-backdrop in"></div>
     <div class="modal-dialog">
         <div class="modal-content">
